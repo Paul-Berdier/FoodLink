@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, flash, request
 from Login import LoginForm
 from Register import RegisterForm
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__)
