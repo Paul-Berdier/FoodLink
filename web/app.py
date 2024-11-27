@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from flask import Flask, render_template, redirect, url_for, flash, request
 from Login import LoginForm
 from Register import RegisterForm
