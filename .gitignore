@@ -1,0 +1,35 @@
+# Ignore le fichier .env
+.env
+
+# Ignore les fichiers .env spécifiques à l'environnement
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore les fichiers générés par l'IDE
+.vscode/
+.idea/
+
+# Ignore les fichiers de cache Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore les fichiers log
+*.log
+
+# Ignore les fichiers de base de données SQLite (si utilisés)
+*.sqlite3
+
+# Ignore les dossiers de dépendances Python
+venv/
+.env/
+
+# Ignore les fichiers d'artefacts
+*.bak
+*.swp
+
+# Ignore les fichiers générés par l'OS
+.DS_Store
+Thumbs.db

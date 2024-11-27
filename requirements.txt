@@ -1,2 +1,7 @@
 flask
 flask-wtf
+flask-sqlalchemy
+flask-bcrypt
+flask-mysql
+pytest
+pytest-mock
