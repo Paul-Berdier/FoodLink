@@ -6,12 +6,25 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Fond bleu clair */
+    background-image: url('test.jpg'); /* Image en fond */
+    background-size: cover; /* L'image couvrira toute la page */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Pas de répétition */
+    height: 100vh; /* Fond couvrant toute la hauteur */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
     overflow: hidden;
+    animation: backgroundMove 10s infinite alternate; /* Animation subtile pour l'arrière-plan */
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: center;
+    }
+    100% {
+        background-position: bottom right; /* Déplacement subtil de l'image de fond */
+    }
 }
 
 .signup-container {
