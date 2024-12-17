@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 # Configuration Flask
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
+s = URLSafeTimedSerializer(app.secret_key)  # Assurez-vous que cela est déclaré ici
 
 # Configuration de SQLAlchemy pour MySQL
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}:{os.getenv('MYSQL_PORT')}/{os.getenv('MYSQL_DB')}"
@@ -37,12 +38,12 @@ class Connexion(db.Model):
     __tablename__ = 'connexion'
     Id_connexion = db.Column(db.Integer, primary_key=True, autoincrement=True)
     mail_connexion = db.Column(db.String(50), unique=True, nullable=False)
-    mdp_connexion = db.Column(db.String(128), nullable=False)  # Haché
-    type_connexion = db.Column(db.String(50), nullable=False)
-    id_commerce = db.Column(db.String(50), nullable=False)
-    nom_commerce = db.Column(db.String(50), nullable=False)
-    departement = db.Column(db.String(50), nullable=False)
-    Id_association = db.Column(db.Integer, nullable=False)
+    mdp_connexion = db.Column(db.String(128), nullable=False)
+    type_connexion = db.Column(db.String(50), nullable=False, default='utilisateur')
+    id_commerce = db.Column(db.String(50), nullable=False, default='default_commerce')
+    nom_commerce = db.Column(db.String(50), nullable=False, default='default_name')
+    departement = db.Column(db.String(50), nullable=False, default='default_dept')
+    Id_association = db.Column(db.Integer, nullable=False, default=1)
 
 # Création des tables si elles n'existent pas
 with app.app_context():
