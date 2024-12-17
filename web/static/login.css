@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('test.jpg'); /* Image en fond */
+    background-size: cover; /* L'image couvrira toute la page */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Pas de répétition */
+    height: 100vh; /* Fond couvrant toute la hauteur */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    overflow: hidden;
+    animation: backgroundMove 10s infinite alternate; /* Animation subtile pour l'arrière-plan */
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: center;
+    }
+    100% {
+        background-position: bottom right; /* Déplacement subtil de l'image de fond */
+    }
+}
+
+.login-container {
+    background-color: #D9CFBD; /* Fond bleu très clair (Alice Blue) */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Largeur maximale du bloc */
+    height: 100%; /* Hauteur du bloc de connexion à 50% de la hauteur de la page */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrer le contenu verticalement dans le bloc */
+    align-items: right; /* Centrer horizontalement */
+    opacity: 0.9;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #45a049; /* Texte en gris foncé pour plus de lisibilité */
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #45a049; /* Couleur du texte des labels */
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #ccc; /* Bordure grise douce */
+    font-size: 1rem;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4CAF50; /* Bouton vert */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s, transform 0.3s; /* Ajout de transitions */
+}
+
+.login-btn:hover {
+    background-color: #45a049; /* Changement de couleur en vert plus foncé au survol */
+    transform: scale(1.05); /* Effet de zoom subtil au survol */
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.options a {
+    color: #4CAF50; /* Lien bleu */
+    text-decoration: none;
+    transition: color 0.3s; /* Transition de couleur pour les liens */
+}
+
+.options a:hover {
+    text-decoration: underline;
+    color: #00b336; /* Lien bleu foncé au survol */
+}

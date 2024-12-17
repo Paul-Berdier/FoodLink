@@ -1,2 +1,10 @@
 flask
 flask-wtf
+flask-sqlalchemy
+flask-bcrypt
+flask-mysql
+pytest
+pytest-mock
+flask_mail
+itsdangerous
+dotenv
