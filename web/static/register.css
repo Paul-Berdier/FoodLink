@@ -6,71 +6,82 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f8ff; /* Fond bleu clair */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
-.login-container {
-    background-color: white;
+.signup-container {
+    background-color: #ffffff; /* Fond blanc pour la fenêtre d'inscription */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px; /* Largeur maximale du bloc */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 1.5rem;
+    color: #333; /* Gris foncé pour le titre */
 }
 
 .input-group {
     margin-bottom: 1rem;
+    width: 100%;
 }
 
 label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #333;
 }
 
-input {
+input, select {
     width: 100%;
     padding: 0.75rem;
     border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     font-size: 1rem;
 }
 
-.login-btn {
+.signup-btn {
     width: 100%;
     padding: 0.75rem;
-    background-color: #007bff;
+    background-color: #4CAF50; /* Bouton vert */
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
     margin-bottom: 1rem;
+    transition: background-color 0.3s, transform 0.3s; /* Effet de transition */
 }
 
-.login-btn:hover {
-    background-color: #0056b3;
+.signup-btn:hover {
+    background-color: #45a049; /* Changement de couleur au survol */
+    transform: scale(1.05); /* Effet de zoom au survol */
 }
 
 .options {
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .options a {
     color: #007bff;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .options a:hover {
     text-decoration: underline;
+    color: #0056b3;
 }

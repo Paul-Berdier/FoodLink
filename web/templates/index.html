@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodLink - Redistribution Alimentaire</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <h1>FoodLink</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" class="login">Login</a></li>
+                    <li><a href="#" class="signup">Signup</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Section principale -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Une nouvelle vie pour les aliments</h2>
+                <p>Rejoignez FoodLink pour réduire le gaspillage alimentaire et redistribuer les ressources là où elles sont nécessaires.</p>
+                <a href="#" class="btn-primary">En savoir plus</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FoodLink. Tous droits réservés.</p>
+        </div>
+    </footer>
 </body>
 </html>

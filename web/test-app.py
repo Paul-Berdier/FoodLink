@@ -1,6 +1,10 @@
 import pytest
 from unittest.mock import MagicMock
 from app import app, db, Connexion
+from itsdangerous import URLSafeTimedSerializer
+
+# Générateur de jetons sécurisés
+s = URLSafeTimedSerializer(app.secret_key)
 
 
 @pytest.fixture
@@ -38,7 +42,7 @@ def test_register_user(mocker, client):
         'confirm_password': 'password123'
     })
     assert response.status_code == 302  # Redirection après inscription
-    assert b"Inscription réussie" in response.data
+    assert "Inscription réussie".encode('utf-8') in response.data
 
 
 def test_login_user(mocker, client):
@@ -50,4 +54,25 @@ def test_login_user(mocker, client):
         'password': 'password123'
     })
     assert response.status_code == 302  # Redirection après connexion
-    assert b"Connexion réussie" in response.data
+    assert "Connexion réussie".encode('utf-8') in response.data
+
+def test_reset_password_request(client, mocker):
+    mocker.patch('app.mail.send', MagicMock())
+    mock_user = Connexion(mail_connexion='test@example.com', mdp_connexion='hashedpassword')
+    mocker.patch('app.Connexion.query.filter_by', return_value=MagicMock(first=lambda: mock_user))
+
+    response = client.post('/reset_password', data={'email': 'test@example.com'})
+    assert response.status_code == 200
+    assert "Un email de réinitialisation a été envoyé.".encode('utf-8') in response.data
+
+def test_reset_password_token(client, mocker):
+    email = "test@example.com"
+    token = s.dumps(email, salt='password-reset-salt')
+
+    mock_user = Connexion(mail_connexion=email, mdp_connexion='hashedpassword')
+    mocker.patch('app.Connexion.query.filter_by', return_value=MagicMock(first=lambda: mock_user))
+
+    response = client.post(f'/reset_password/{token}', data={'password': 'newpassword'})
+    assert response.status_code == 200
+    assert "Votre mot de passe a été réinitialisé.".encode('utf-8') in response.data
+
