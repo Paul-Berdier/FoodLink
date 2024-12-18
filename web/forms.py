@@ -10,9 +10,8 @@ def strong_password(form, field):
         raise ValidationError('Le mot de passe doit contenir au moins 8 caractères, une majuscule et un chiffre.')
 
 class RegistrationForm(FlaskForm):
-    username = StringField("Nom d'utilisateur", validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField("Adresse e-mail", validators=[DataRequired(), Email()])
     password = PasswordField("Mot de passe", validators=[DataRequired(), strong_password])
     confirm_password = PasswordField("Confirmer le mot de passe", validators=[DataRequired(), EqualTo('password')])
-    role = SelectField("Rôle", choices=[('user', 'Utilisateur'), ('admin', 'Administrateur'), ('moderator', 'Modérateur')])
+    role = SelectField("Rôle", choices=[('association', 'Association'), ('commerce', 'Commerçant')], validators=[DataRequired()])
     submit = SubmitField("S'inscrire")
