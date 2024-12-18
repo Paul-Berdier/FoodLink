@@ -13,36 +13,62 @@
         <h2>Inscription</h2>
         <form method="POST" action="{{ url_for('register') }}">
     <div>
-        <label for="email">Adresse Email</label>
-        <input type="email" name="email" id="email" required>
+        <label for="email">Email :</label>
+        <input type="email" name="email" required>
     </div>
     <div>
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" required>
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" required>
     </div>
     <div>
-        <label for="role">Rôle</label>
-        <select name="role" id="role" onchange="toggleRoleFields()" required>
-            <option value="">Choisissez un rôle</option>
-            <option value="commerce">Commerce</option>
+        <label for="role">Type d'utilisateur :</label>
+        <select name="role" required>
             <option value="association">Association</option>
+            <option value="commerce">Commerce</option>
         </select>
     </div>
-    <div id="commerce-fields" style="display: none;">
-        <label for="nom_commerce">Nom du Commerce</label>
-        <input type="text" name="nom_commerce" id="nom_commerce">
-        <label for="siret_commerce">SIRET du Commerce</label>
-        <input type="text" name="siret_commerce" id="siret_commerce">
+    <div>
+        <label for="nom">Nom de l'entreprise :</label>
+        <input type="text" name="nom" required>
     </div>
-    <div id="association-fields" style="display: none;">
-        <label for="nom_association">Nom de l'Association</label>
-        <input type="text" name="nom_association" id="nom_association">
-        <label for="siret_association">SIRET de l'Association</label>
-        <input type="text" name="siret_association" id="siret_association">
+    <div>
+        <label for="siret">SIRET :</label>
+        <input type="text" name="siret" required>
     </div>
-
+    <div>
+        <label for="adresse">Adresse :</label>
+        <input type="text" name="adresse" required>
+    </div>
+    <div>
+        <label for="ville">Ville :</label>
+        <input type="text" name="ville" required>
+    </div>
+    <div>
+        <label for="departement">Département :</label>
+        <input type="text" name="departement" required>
+    </div>
+    <div>
+        <label for="tel">Téléphone :</label>
+        <input type="text" name="tel">
+    </div>
+    <div id="type_commerce_field" style="display: none;">
+        <label for="type_commerce">Type de commerce :</label>
+        <input type="text" name="type_commerce">
+    </div>
     <button type="submit" class="signup-btn">S'inscrire</button>
 </form>
+
+<script>
+    // Afficher ou masquer le champ "Type de commerce" selon le rôle
+    document.querySelector('[name="role"]').addEventListener('change', function() {
+        const typeField = document.getElementById('type_commerce_field');
+        if (this.value === 'commerce') {
+            typeField.style.display = 'block';
+        } else {
+            typeField.style.display = 'none';
+        }
+    });
+</script>
 
 <script>
     function toggleRoleFields() {

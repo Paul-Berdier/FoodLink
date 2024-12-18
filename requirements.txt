@@ -10,3 +10,4 @@ itsdangerous
 dotenv
 email-validator
 flask-login
+requests

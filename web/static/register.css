@@ -14,7 +14,7 @@ body {
     display: flex;
     justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
-    overflow: hidden;
+    overflow-y: auto; /* Ajout de la possibilité de scroller */
     animation: backgroundMove 10s infinite alternate; /* Animation subtile pour l'arrière-plan */
 }
 
@@ -28,24 +28,27 @@ body {
 }
 
 .signup-container {
-    background-color: #D9CFBD; /* Fond bleu très clair (Alice Blue) */
+    background-color: #D9CFBD; /* Fond blanc légèrement transparent */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px; /* Largeur maximale du bloc */
-    height: 80%; /* Hauteur du bloc de connexion à 50% de la hauteur de la page */
+    opacity: 0.9;
+    max-width: 500px; /* Largeur maximale */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrer le contenu verticalement dans le bloc */
-    align-items: right; /* Centrer horizontalement */
-    opacity: 0.9;
+    justify-content: flex-start; /* Aligner le contenu en haut */
+    align-items: stretch;
+    max-height: 90vh; /* Hauteur ajustée */
+    margin-top: 1rem; /* Ajout d'un léger espace en haut */
+    overflow-y: auto; /* Scroll interne uniquement si nécessaire */
 }
 
 h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #333; /* Gris foncé pour le titre */
+    color: #45a049;
+    font-size: 1.8rem; /* Taille augmentée pour bien distinguer le titre */
 }
 
 .input-group {
@@ -57,7 +60,7 @@ label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
-    color: #333;
+    color: #45a049;
 }
 
 input, select {
@@ -66,37 +69,25 @@ input, select {
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 1rem;
+    background-color: #fff;
+    opacity: 0.9;
+
 }
 
 .signup-btn {
     width: 100%;
     padding: 0.75rem;
-    background-color: #4CAF50; /* Bouton vert */
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
-    margin-bottom: 1rem;
-    transition: background-color 0.3s, transform 0.3s; /* Effet de transition */
+    margin-top: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .signup-btn:hover {
-    background-color: #45a049; /* Changement de couleur au survol */
-    transform: scale(1.05); /* Effet de zoom au survol */
-}
-
-.options {
-    text-align: center;
-}
-
-.options a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.options a:hover {
-    text-decoration: underline;
-    color: #0056b3;
+    background-color: #45a049;
+    transform: scale(1.05);
 }

@@ -1,12 +1,17 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+import os
+import sys
 from flask_mail import Mail, Message
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from itsdangerous import URLSafeTimedSerializer
 from dotenv import load_dotenv
 from smtplib import SMTPException
-import os
+from sqlalchemy.dialects.mysql import JSON
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
+from geocoding import get_coordinates
+
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -41,54 +46,54 @@ login_manager.login_view = 'login'
 
 # Modèles pour les nouvelles tables
 class Produit(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nom = db.Column(db.Text, nullable=False)
-    prix = db.Column(db.Float, nullable=False)
-    marque = db.Column(db.Text, nullable=True)
+    id = db.Column(db.BigInteger, primary_key=True)
+    nom = db.Column(db.String(50), nullable=False)
+    prix = db.Column(db.Numeric(10, 2), nullable=False)
+    marque = db.Column(db.String(50), nullable=False)
 
 
 class Association(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    nom = db.Column(db.Text, nullable=False)
-    coordonnees = db.Column(db.Text, nullable=True)
-    ville = db.Column(db.Text, nullable=True)
-    adresse = db.Column(db.Text, nullable=True)
-    departement = db.Column(db.Integer, nullable=True)
-    adresse_mail = db.Column(db.Text, unique=True, nullable=False)
-    tel = db.Column(db.Text, nullable=True)
-    siret = db.Column(db.Text, nullable=False)
-    mdp = db.Column(db.Text, nullable=False)
+    id = db.Column(db.BigInteger, primary_key=True)
+    nom = db.Column(db.String(50), nullable=False)
+    coordonnees = db.Column(JSON, nullable=True)
+    ville = db.Column(db.String(50), nullable=False)
+    adresse = db.Column(db.String(50), nullable=False)
+    departement = db.Column(db.String(20), nullable=True)
+    adresse_mail = db.Column(db.String(50), unique=True, nullable=False)
+    tel = db.Column(db.String(20), nullable=True)
+    siret = db.Column(db.BigInteger, nullable=False)
+    mdp = db.Column(db.String(50), nullable=False)
 
 
 class Commerce(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    nom = db.Column(db.Text, nullable=False)
-    departement = db.Column(db.Text, nullable=True)
-    coordonnees = db.Column(db.Text, nullable=True)
-    type_commerce = db.Column(db.Text, nullable=True)
-    adresse = db.Column(db.Text, nullable=True)
-    ville = db.Column(db.Text, nullable=True)
-    adresse_mail = db.Column(db.Text, unique=True, nullable=False)
-    tel = db.Column(db.Text, nullable=True)
-    siret = db.Column(db.Text, nullable=False)
-    mdp = db.Column(db.Text, nullable=False)
+    id = db.Column(db.BigInteger, primary_key=True)
+    nom = db.Column(db.String(50), nullable=False)
+    departement = db.Column(db.String(50), nullable=False)
+    coordonnees = db.Column(JSON, nullable=True)
+    type_commerce = db.Column(db.String(50), nullable=False)
+    adresse = db.Column(db.String(50), nullable=False)
+    ville = db.Column(db.String(50), nullable=False)
+    adresse_mail = db.Column(db.String(50), unique=True, nullable=False)
+    tel = db.Column(db.String(20), nullable=True)
+    mdp = db.Column(db.String(50), nullable=False)
+    siret = db.Column(db.BigInteger, nullable=False)
 
 
 class Offre(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    id_produit = db.Column(db.Integer, db.ForeignKey("produit.id"), nullable=False)
+    id = db.Column(db.BigInteger, primary_key=True)
+    id_produit = db.Column(db.BigInteger, db.ForeignKey("produit.id", ondelete="CASCADE"), nullable=False)
     quantite = db.Column(db.Integer, nullable=False)
-    prix_du_lot = db.Column(db.Float, nullable=False)
-    date_limite = db.Column(db.DateTime, nullable=False)
-    id_commerce = db.Column(db.Integer, db.ForeignKey("commerce.id"), nullable=False)
-    disponibilite = db.Column(db.Boolean, default=True)
+    prix_du_lot = db.Column(db.Numeric(10, 2), nullable=False)
+    date_limite = db.Column(db.Date, nullable=False)
+    id_commerce = db.Column(db.BigInteger, db.ForeignKey("commerce.id", ondelete="CASCADE"), nullable=False)
+    disponibilite = db.Column(db.Boolean, nullable=False, default=True)
 
 
-class Transaction(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    id_offre = db.Column(db.Integer, db.ForeignKey("offre.id"), nullable=False)
-    id_association = db.Column(db.Integer, db.ForeignKey("association.id"), nullable=False)
-    date_transaction = db.Column(db.DateTime, nullable=False)
+class Echange(db.Model):
+    id = db.Column(db.BigInteger, primary_key=True)
+    id_offre = db.Column(db.BigInteger, db.ForeignKey("offre.id", ondelete="CASCADE"), nullable=False)
+    id_association = db.Column(db.BigInteger, db.ForeignKey("association.id", ondelete="CASCADE"), nullable=False)
+    date_echange = db.Column(db.Date, nullable=False)
 
 
 @login_manager.user_loader
@@ -118,39 +123,53 @@ def register():
         password = request.form['password']
         role = request.form['role']
         siret = request.form['siret']
+        nom = request.form['nom']
+        adresse = request.form['adresse']
+        ville = request.form['ville']
+        departement = request.form['departement']
+        tel = request.form['tel']
 
+        # Appeler la fonction pour récupérer les coordonnées
+        coordonnees = get_coordinates(adresse, ville)
+
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+        # Création de l'utilisateur Association ou Commerce
         if role == 'association':
-            if Association.query.filter_by(adresse_mail=email).first():
-                flash('Cet email est déjà utilisé.', 'danger')
-            else:
-                hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-                new_user = Association(
-                    adresse_mail=email,
-                    mdp=hashed_password,
-                    siret=siret,
-                    nom=request.form['nom']
-                )
-                db.session.add(new_user)
-                db.session.commit()
-                flash('Inscription réussie. Vous pouvez maintenant vous connecter.', 'success')
-                return redirect(url_for('login'))
-
+            new_user = Association(
+                nom=nom,
+                adresse_mail=email,
+                mdp=hashed_password,
+                siret=siret,
+                adresse=adresse,
+                ville=ville,
+                departement=departement,
+                tel=tel,
+                coordonnees=coordonnees
+            )
         elif role == 'commerce':
-            if Commerce.query.filter_by(adresse_mail=email).first():
-                flash('Cet email est déjà utilisé.', 'danger')
-            else:
-                hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-                new_user = Commerce(
-                    adresse_mail=email,
-                    mdp=hashed_password,
-                    siret=siret,
-                    nom=request.form['nom']
-                )
-                db.session.add(new_user)
-                db.session.commit()
-                flash('Inscription réussie. Vous pouvez maintenant vous connecter.', 'success')
-                return redirect(url_for('login'))
+            new_user = Commerce(
+                nom=nom,
+                adresse_mail=email,
+                mdp=hashed_password,
+                siret=siret,
+                adresse=adresse,
+                ville=ville,
+                departement=departement,
+                tel=tel,
+                coordonnees=coordonnees
+            )
+        else:
+            flash("Type d'utilisateur invalide.", "danger")
+            return redirect(url_for('register'))
+
+        db.session.add(new_user)
+        db.session.commit()
+        flash('Inscription réussie. Vous pouvez maintenant vous connecter.', 'success')
+        return redirect(url_for('login'))
+
     return render_template('register.html')
+
 
 
 # Route de connexion
