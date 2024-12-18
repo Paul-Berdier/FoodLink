@@ -11,34 +11,47 @@
     <!-- Conteneur d'inscription -->
     <div class="signup-container">
         <h2>Inscription</h2>
-        <form action="{{ url_for('register') }}" method="POST">
-            <!-- Groupe pour l'email -->
-            <div class="input-group">
-                <label for="email">Adresse e-mail</label>
-                <input type="email" id="email" name="email" placeholder="Entrez votre adresse e-mail" required>
-            </div>
-            <!-- Groupe pour le mot de passe -->
-            <div class="input-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
-                <small>Votre mot de passe doit contenir au moins 8 caractères, une majuscule et un chiffre.</small>
-            </div>
-            <!-- Groupe pour la confirmation du mot de passe -->
-            <div class="input-group">
-                <label for="confirm_password">Confirmer le mot de passe</label>
-                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmez votre mot de passe" required>
-            </div>
-            <!-- Groupe pour le rôle -->
-            <div class="input-group">
-                <label for="role">Rôle</label>
-                <select id="role" name="role" required>
-                    <option value="association">Association</option>
-                    <option value="commerce">Commerçant</option>
-                </select>
-            </div>
-            <!-- Bouton d'inscription -->
-            <button type="submit" class="signup-btn">S'inscrire</button>
-        </form>
+        <form method="POST" action="{{ url_for('register') }}">
+    <div>
+        <label for="email">Adresse Email</label>
+        <input type="email" name="email" id="email" required>
+    </div>
+    <div>
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <div>
+        <label for="role">Rôle</label>
+        <select name="role" id="role" onchange="toggleRoleFields()" required>
+            <option value="">Choisissez un rôle</option>
+            <option value="commerce">Commerce</option>
+            <option value="association">Association</option>
+        </select>
+    </div>
+    <div id="commerce-fields" style="display: none;">
+        <label for="nom_commerce">Nom du Commerce</label>
+        <input type="text" name="nom_commerce" id="nom_commerce">
+        <label for="siret_commerce">SIRET du Commerce</label>
+        <input type="text" name="siret_commerce" id="siret_commerce">
+    </div>
+    <div id="association-fields" style="display: none;">
+        <label for="nom_association">Nom de l'Association</label>
+        <input type="text" name="nom_association" id="nom_association">
+        <label for="siret_association">SIRET de l'Association</label>
+        <input type="text" name="siret_association" id="siret_association">
+    </div>
+
+    <button type="submit" class="signup-btn">S'inscrire</button>
+</form>
+
+<script>
+    function toggleRoleFields() {
+        const role = document.getElementById('role').value;
+        document.getElementById('commerce-fields').style.display = role === 'commerce' ? 'block' : 'none';
+        document.getElementById('association-fields').style.display = role === 'association' ? 'block' : 'none';
+    }
+</script>
+
 
         <!-- Redirection vers la page de connexion -->
         <div class="options">

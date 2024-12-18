@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS commerce (
    adresse_mail TEXT,
    tel TEXT,
    siret TEXT,
+    mdp TEXT,
    PRIMARY KEY(id)
 );
 

@@ -41,6 +41,22 @@
             <p>Vous n'avez pas accès à ces informations.</p>
             {% endif %}
         </fieldset>
+        {% if user.type_connexion == 'commerce' %}
+<fieldset>
+    <legend>Modifier les informations du commerce</legend>
+    <label for="type_commerce">Type de commerce :</label>
+    <input type="text" id="type_commerce" name="type_commerce" value="{{ user.type_commerce }}">
+    <br>
+    <label for="siret_commerce">Numéro SIRET :</label>
+    <input type="text" id="siret_commerce" name="siret_commerce" value="{{ user.siret }}">
+</fieldset>
+{% elif user.type_connexion == 'association' %}
+<fieldset>
+    <legend>Modifier les informations de l'association</legend>
+    <label for="siret_association">Numéro SIRET :</label>
+    <input type="text" id="siret_association" name="siret_association" value="{{ user.siret }}">
+</fieldset>
+{% endif %}
 
         <button type="submit">Enregistrer les modifications</button>
     </form>
