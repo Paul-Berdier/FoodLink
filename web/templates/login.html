@@ -26,6 +26,7 @@
             <a href="{{ url_for('register') }}" class="signup">Inscription</a>
         </div>
     </div>
+    <div>
 <!-- Messages flash affichés ici -->
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -36,5 +37,6 @@
             </ul>
         {% endif %}
     {% endwith %}
+        </div>
 </body>
 </html>

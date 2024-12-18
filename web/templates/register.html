@@ -45,7 +45,7 @@
             <a href="{{ url_for('login') }}">Vous avez déjà un compte ? Connectez-vous</a>
         </div>
     </div>
-
+    <div>
     <!-- Affichage des messages flash -->
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -56,5 +56,6 @@
             </ul>
         {% endif %}
     {% endwith %}
+        </div>
 </body>
 </html>

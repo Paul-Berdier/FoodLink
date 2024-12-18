@@ -1,84 +1,62 @@
-CREATE TABLE Produit (
-    id_produit VARCHAR(50),
-    name_produit VARCHAR(50),
-    prix DECIMAL(15,2),
-    PRIMARY KEY (id_produit)
+CREATE DATABASE IF NOT EXISTS FoodLink;
+
+USE FoodLink;
+
+CREATE TABLE IF NOT EXISTS produit(
+   id NUMERIC,
+   nom TEXT,
+   prix NUMERIC,
+   marque TEXT,
+   PRIMARY KEY(id)
 );
 
-CREATE TABLE Association (
-    Id_association INT AUTO_INCREMENT,
-    nom_association VARCHAR(50),
-    longitude_asso VARCHAR(50),
-    latitude_asso VARCHAR(50),
-    adresse_asso VARCHAR(50),
-    departement_asso INT,
-    adresse_mail_asso VARCHAR(50),
-    num_tel_asso VARCHAR(50),
-    PRIMARY KEY (Id_association)
+CREATE TABLE IF NOT EXISTS association (
+    id NUMERIC,
+    nom TEXT,
+    coordonnees TEXT,
+    ville TEXT,
+    adresse TEXT,
+    departement NUMERIC,
+    adresse_mail TEXT,
+    tel TEXT,
+    siret TEXT,
+    mdp TEXT,
+    PRIMARY KEY(id)
 );
 
-CREATE TABLE Commerce (
-    id_commerce VARCHAR(50),
-    nom_commerce VARCHAR(50),
-    departement VARCHAR(50),
-    longitude_commerce VARCHAR(50),
-    latitude_commerce VARCHAR(50),
-    groupe VARCHAR(50),
-    type_de_commerce VARCHAR(50),
-    adresse_commerce VARCHAR(50),
-    PRIMARY KEY (id_commerce, nom_commerce, departement)
+CREATE TABLE IF NOT EXISTS commerce (
+   id NUMERIC,
+   nom TEXT,
+   departement TEXT,
+   coordonnees TEXT,
+   type_commerce TEXT,
+   adresse TEXT,
+   ville TEXT,
+   adresse_mail TEXT,
+   tel TEXT,
+   siret TEXT,
+   PRIMARY KEY(id)
 );
 
-CREATE TABLE Connexion (
-    Id_connexion INT AUTO_INCREMENT,
-    mail_connexion VARCHAR(50),
-    mdp_connexion VARCHAR(255),
-    type_connexion VARCHAR(50),
-    id_commerce VARCHAR(50) NOT NULL,
-    nom_commerce VARCHAR(50) NOT NULL,
-    departement VARCHAR(50) NOT NULL,
-    Id_association INT NOT NULL,
-    PRIMARY KEY (Id_connexion),
-    FOREIGN KEY (id_commerce, nom_commerce, departement)
-        REFERENCES Commerce(id_commerce, nom_commerce, departement),
-    FOREIGN KEY (Id_association)
-        REFERENCES Association(Id_association)
+CREATE TABLE IF NOT EXISTS offre (
+    id NUMERIC,
+    id_produit NUMERIC,
+    quantite NUMERIC,
+    prix_du_lot NUMERIC,
+    date_limite DATETIME,
+    id_commerce NUMERIC,
+    disponibilite BOOLEAN,
+    PRIMARY KEY(id),
+    FOREIGN KEY (id_commerce) REFERENCES commerce(id),
+    FOREIGN KEY (id_produit) REFERENCES produit(id)
 );
 
-CREATE TABLE Offre (
-    Id_offre INT AUTO_INCREMENT,
-    id_produit VARCHAR(50),
-    quantite VARCHAR(50),
-    prix_du_lot DECIMAL(15,2),
-    date_limite DATE,
-    id_commerce VARCHAR(50) NOT NULL,
-    nom_commerce VARCHAR(50) NOT NULL,
-    departement VARCHAR(50) NOT NULL,
-    PRIMARY KEY (Id_offre, id_produit),
-    FOREIGN KEY (id_commerce, nom_commerce, departement)
-        REFERENCES Commerce(id_commerce, nom_commerce, departement),
-    FOREIGN KEY (id_produit)
-        REFERENCES Produit(id_produit)
-);
-
-CREATE TABLE Correspondre (
-    id_produit VARCHAR(50),
-    Id_offre INT,
-    id_produit_1 VARCHAR(50),
-    PRIMARY KEY (id_produit, Id_offre, id_produit_1),
-    FOREIGN KEY (id_produit)
-        REFERENCES Produit(id_produit),
-    FOREIGN KEY (Id_offre, id_produit_1)
-        REFERENCES Offre(Id_offre, id_produit)
-);
-
-CREATE TABLE Acheter (
-    Id_association INT,
-    Id_offre INT,
-    id_produit VARCHAR(50),
-    PRIMARY KEY (Id_association, Id_offre, id_produit),
-    FOREIGN KEY (Id_association)
-        REFERENCES Association(Id_association),
-    FOREIGN KEY (Id_offre, id_produit)
-        REFERENCES Offre(Id_offre, id_produit)
+CREATE TABLE IF NOT EXISTS `transaction` (
+    id NUMERIC,
+    id_offre NUMERIC,
+    id_association NUMERIC,
+    date_transaction DATETIME,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_association) REFERENCES association(id),
+    FOREIGN KEY (id_offre) REFERENCES offre(id)
 );

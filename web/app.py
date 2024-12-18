@@ -167,6 +167,47 @@ def reset_password_token(token):
             return redirect(url_for('login'))
     return render_template('reset_password_token.html', email=email)
 
+# Route pour afficher et modifier les informations du profil
+@app.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    user = current_user
+    if request.method == 'POST':
+        # Modification des informations
+        if 'email' in request.form:
+            email = request.form['email']
+            if User.query.filter_by(mail_connexion=email).first() and email != user.mail_connexion:
+                flash('Cet email est déjà utilisé.', 'danger')
+            else:
+                user.mail_connexion = email
+                flash('Email mis à jour avec succès.', 'success')
+
+        if 'password' in request.form:
+            password = request.form['password']
+            if len(password) < 8:
+                flash('Le mot de passe doit contenir au moins 8 caractères.', 'danger')
+            else:
+                user.mdp_connexion = bcrypt.generate_password_hash(password).decode('utf-8')
+                flash('Mot de passe mis à jour avec succès.', 'success')
+
+        if 'nom_commerce' in request.form:
+            user.nom_commerce = request.form['nom_commerce']
+            user.departement = request.form['departement']
+
+        if 'nom_association' in request.form:
+            association = Association.query.filter_by(Id_association=user.Id_association).first()
+            if association:
+                association.nom_association = request.form['nom_association']
+                association.adresse_asso = request.form['adresse_asso']
+                association.num_tel_asso = request.form['num_tel_asso']
+                db.session.commit()
+                flash("Les informations de l'association ont été mises à jour.", "success")
+
+        db.session.commit()
+
+    return render_template('profile.html', user=user)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
