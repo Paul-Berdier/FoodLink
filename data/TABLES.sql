@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS association (
     adresse VARCHAR(50) NOT NULL,  -- L'adresse est obligatoire
     departement VARCHAR(20),  -- Département (optionnel)
     adresse_mail VARCHAR(50) NOT NULL UNIQUE,  -- Adresse email unique et obligatoire
-    tel VARCHAR(20),  -- Numéro de téléphone (optionnel)
-    siret BIGINT NOT NULL,  -- SIRET obligatoire
+    tel INT(10) NOT NULL,  -- Numéro de téléphone (optionnel)
+    siret BIGINT(14) NOT NULL,  -- SIRET obligatoire
     mdp VARCHAR(50) NOT NULL,  -- Mot de passe obligatoire
     PRIMARY KEY (id)  -- Définition de la clé primaire
 );
@@ -30,15 +30,15 @@ CREATE TABLE IF NOT EXISTS association (
 CREATE TABLE IF NOT EXISTS commerce (
     id BIGINT AUTO_INCREMENT,  -- Ajout d'AUTO_INCREMENT pour générer automatiquement les IDs
     nom VARCHAR(50) NOT NULL,  -- Le nom est obligatoire
-    departement VARCHAR(50) NOT NULL,  -- Le département est obligatoire
+    departement VARCHAR(50),  -- Le département est obligatoire
     coordonnees JSON,  -- Les coordonnées en format JSON
     type_commerce VARCHAR(50) NOT NULL,  -- Type de commerce obligatoire
     adresse VARCHAR(50) NOT NULL,  -- L'adresse est obligatoire
     ville VARCHAR(50) NOT NULL,  -- La ville est obligatoire
     adresse_mail VARCHAR(50) NOT NULL UNIQUE,  -- Adresse email unique et obligatoire
-    tel VARCHAR(20),  -- Numéro de téléphone (optionnel)
+    tel INT(10) NOT NULL ,  -- Numéro de téléphone (optionnel)
     mdp VARCHAR(50) NOT NULL,  -- Mot de passe obligatoire
-    siret BIGINT NOT NULL,  -- SIRET obligatoire
+    siret BIGINT(14) NOT NULL,  -- SIRET obligatoire
     PRIMARY KEY (id)  -- Définition de la clé primaire
 );
 
