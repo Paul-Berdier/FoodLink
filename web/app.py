@@ -14,7 +14,7 @@ from geocoding import get_coordinates
 import re
 from flask import render_template, flash, redirect, url_for, request
 from flask_bcrypt import Bcrypt
-
+from Register import validate_phone_number, validate_email, validate_siret
 
 
 # Charger les variables d'environnement
@@ -128,21 +128,6 @@ with app.app_context():
 def index():
     return render_template('index.html')
 
-
-bcrypt = Bcrypt()
-
-def validate_siret(siret):
-    """Vérifie si le numéro SIRET est valide (14 chiffres)."""
-    return bool(re.match(r'^\d{14}$', siret))
-
-
-def validate_email(email):
-    """Vérifie si l'adresse e-mail a un format valide."""
-    return bool(re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email))
-
-def validate_phone_number(phone):
-    """Vérifie si le numéro de téléphone français est valide."""
-    return bool(re.match(r'^(?:\+33|0)[1-9](?:\d{2}){4}$', phone))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
