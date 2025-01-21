@@ -1,0 +1,53 @@
+/* header.css */
+header {
+    position: fixed; /* Fixer le header en haut */
+    top: 0;
+    left: 0;
+    width: 100%; /* S'assurer qu'il occupe toute la largeur */
+    background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond semi-transparente */
+    padding: 10px 20px;
+    z-index: 1000; /* Mettre le header au-dessus du contenu */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Espacement entre les éléments */
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #f0a500; /* Changement de couleur au survol */
+}
+
+body {
+    margin: 0; /* Supprimer les marges par défaut */
+    padding-top: 60px; /* Créer un espace sous le header pour éviter le chevauchement */
+}
+
+.login-container {
+    margin: 100px auto; /* Ajouter une marge pour éviter le chevauchement */
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

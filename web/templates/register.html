@@ -6,8 +6,13 @@
     <title>FoodLink - Inscription</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+
 </head>
 <body>
+
+        {% include 'header.html' %}
+
     <!-- Conteneur d'inscription -->
     <div class="signup-container">
         <h2>Inscription</h2>

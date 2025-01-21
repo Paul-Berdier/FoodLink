@@ -1,0 +1,15 @@
+<!-- templates/header.html -->
+<header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Accueil</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('profile') }}">Profil</a></li>
+                <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Connexion</a></li>
+                <li><a href="{{ url_for('register') }}">Inscription</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

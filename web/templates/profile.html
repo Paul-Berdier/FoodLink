@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Profil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <title>FoodLink - Mon Profil</title>
 </head>
 <body>
+
+        {% include 'header.html' %}
+
     <h1>Mon Profil</h1>
     <form method="POST">
         <fieldset>
