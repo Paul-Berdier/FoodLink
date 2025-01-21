@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS association (
     adresse_mail VARCHAR(50) NOT NULL UNIQUE,  -- Adresse email unique et obligatoire
     tel INT(10) NOT NULL,  -- Numéro de téléphone (optionnel)
     siret BIGINT(14) NOT NULL,  -- SIRET obligatoire
-    mdp VARCHAR(50) NOT NULL,  -- Mot de passe obligatoire
+    mdp VARCHAR(60) NOT NULL,  -- Mot de passe obligatoire
     PRIMARY KEY (id)  -- Définition de la clé primaire
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS commerce (
     ville VARCHAR(50) NOT NULL,  -- La ville est obligatoire
     adresse_mail VARCHAR(50) NOT NULL UNIQUE,  -- Adresse email unique et obligatoire
     tel INT(10) NOT NULL ,  -- Numéro de téléphone (optionnel)
-    mdp VARCHAR(50) NOT NULL,  -- Mot de passe obligatoire
+    mdp VARCHAR(60) NOT NULL,  -- Mot de passe obligatoire
     siret BIGINT(14) NOT NULL,  -- SIRET obligatoire
     PRIMARY KEY (id)  -- Définition de la clé primaire
 );
