@@ -115,7 +115,6 @@ def index():
     return render_template('index.html')
 
 
-# Route d'inscription
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -130,8 +129,13 @@ def register():
         tel = request.form['tel']
 
         # Appeler la fonction pour récupérer les coordonnées
-        coordonnees = get_coordinates(adresse, ville)
+        coord_response = get_coordinates(adresse, ville)
 
+        if not coord_response["success"]:
+            flash(f"Erreur lors de la récupération des coordonnées : {coord_response['error']}", "danger")
+            return redirect(url_for('register'))
+
+        coordonnees = coord_response["coordinates"]
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
         # Création de l'utilisateur Association ou Commerce
@@ -163,13 +167,16 @@ def register():
             flash("Type d'utilisateur invalide.", "danger")
             return redirect(url_for('register'))
 
-        db.session.add(new_user)
-        db.session.commit()
-        flash('Inscription réussie. Vous pouvez maintenant vous connecter.', 'success')
-        return redirect(url_for('login'))
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Inscription réussie. Vous pouvez maintenant vous connecter.', 'success')
+            return redirect(url_for('login'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Erreur lors de l'inscription : {str(e)}", "danger")
 
     return render_template('register.html')
-
 
 
 # Route de connexion
