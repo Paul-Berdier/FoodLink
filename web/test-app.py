@@ -57,7 +57,7 @@ def test_login(client):
     hashed_password = bcrypt.generate_password_hash("password123").decode("utf-8")
     association = Association(
         nom="Login Test Association",
-        adresse_mail="paul.berdo@hotmail.com",
+        adresse_mail="login@test.com",
         mdp=hashed_password,
         siret=11122233344455,
         adresse="22 rue germaine richier",

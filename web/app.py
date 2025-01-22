@@ -294,12 +294,6 @@ def reset_password():
             try:
                 token = s.dumps(email, salt='password-reset-salt')
                 reset_url = url_for('reset_password_token', token=token, _external=True)
-                # msg = Message(
-                #     "Réinitialisation de votre mot de passe",
-                #     sender=app.config['MAIL_USERNAME'],
-                #     recipients=[email]
-                # )
-                # msg.body = f"Cliquez sur ce lien pour réinitialiser votre mot de passe : {reset_url}"
                 message = f"Cliquez sur ce lien pour reinitialiser votre mot de passe : {reset_url}"
 
                 envoyer_mail(email, message)
