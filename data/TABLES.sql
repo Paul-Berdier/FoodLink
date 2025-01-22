@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS commerce (
     nom VARCHAR(50) NOT NULL,  -- Le nom est obligatoire
     departement VARCHAR(50),  -- Le département est obligatoire
     coordonnees JSON,  -- Les coordonnées en format JSON
-    type_commerce VARCHAR(50) NOT NULL,  -- Type de commerce obligatoire
+    type_commerce VARCHAR(50),  -- Type de commerce obligatoire
     adresse VARCHAR(50) NOT NULL,  -- L'adresse est obligatoire
     ville VARCHAR(50) NOT NULL,  -- La ville est obligatoire
     adresse_mail VARCHAR(50) NOT NULL UNIQUE,  -- Adresse email unique et obligatoire

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 import os
 import sys
 from flask_mail import Mail, Message
@@ -11,10 +10,10 @@ from smtplib import SMTPException
 from sqlalchemy.dialects.mysql import JSON
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
 from geocoding import get_coordinates
-import re
 from flask import render_template, flash, redirect, url_for, request
 from flask_bcrypt import Bcrypt
 from Register import validate_phone_number, validate_email, validate_siret
+from mail_truc import envoyer_mail
 
 
 # Charger les variables d'environnement
@@ -76,7 +75,7 @@ class Commerce(db.Model, UserMixin):
     nom = db.Column(db.String(50), nullable=False)
     departement = db.Column(db.String(50), nullable=True)
     coordonnees = db.Column(JSON, nullable=True)
-    type_commerce = db.Column(db.String(50), nullable=False)
+    type_commerce = db.Column(db.String(50), nullable=True)
     adresse = db.Column(db.String(50), nullable=False)
     ville = db.Column(db.String(50), nullable=False)
     adresse_mail = db.Column(db.String(50), unique=True, nullable=False)  # Contrainte unique
@@ -140,7 +139,8 @@ def register():
         "adresse": "",
         "ville": "",
         "departement": "",
-        "tel": ""
+        "tel": "",
+        "type_commerce": ""
     }
 
     if request.method == 'POST':
@@ -154,12 +154,13 @@ def register():
             "adresse": request.form['adresse'],
             "ville": request.form['ville'],
             "departement": request.form['departement'],
-            "tel": request.form['tel']
+            "tel": request.form['tel'],
+            "type_commerce": request.form.get('type_commerce', None)
         })
 
         # Validation des champs obligatoires
         if not all([form_data['email'], form_data['password'], form_data['role'], form_data['siret'],
-                    form_data['nom'], form_data['adresse'], form_data['ville'], form_data['departement'], form_data['tel']]):
+                    form_data['nom'], form_data['adresse'], form_data['ville'], form_data['tel']]):
             flash("Tous les champs sont obligatoires.", "danger")
             return render_template('register.html', form_data=form_data)
 
@@ -237,7 +238,8 @@ def register():
                     ville=form_data['ville'],
                     departement=form_data['departement'],
                     tel=form_data['tel'],
-                    coordonnees=get_coordinates(form_data['adresse'], form_data['ville'])["coordinates"]
+                    coordonnees=get_coordinates(form_data['adresse'], form_data['ville'])["coordinates"],
+                    type_commerce=form_data['type_commerce']
                 )
 
             db.session.add(new_user)
@@ -292,13 +294,15 @@ def reset_password():
             try:
                 token = s.dumps(email, salt='password-reset-salt')
                 reset_url = url_for('reset_password_token', token=token, _external=True)
-                msg = Message(
-                    "Réinitialisation de votre mot de passe",
-                    sender=app.config['MAIL_USERNAME'],
-                    recipients=[email]
-                )
-                msg.body = f"Cliquez sur ce lien pour réinitialiser votre mot de passe : {reset_url}"
-                mail.send(msg)
+                # msg = Message(
+                #     "Réinitialisation de votre mot de passe",
+                #     sender=app.config['MAIL_USERNAME'],
+                #     recipients=[email]
+                # )
+                # msg.body = f"Cliquez sur ce lien pour réinitialiser votre mot de passe : {reset_url}"
+                message = f"Cliquez sur ce lien pour reinitialiser votre mot de passe : {reset_url}"
+
+                envoyer_mail(email, message)
                 flash('Un email de réinitialisation a été envoyé.', 'info')
             except SMTPException:
                 flash("Erreur lors de l'envoi de l'email. Veuillez réessayer plus tard.", 'danger')
