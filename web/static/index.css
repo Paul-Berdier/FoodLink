@@ -1,121 +1,1575 @@
-/* Importation des polices Google */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-/* Palette de couleurs */
-:root {
-    --beige: #d9cfbd;
-    --orange-light: #ffa94d;
-    --green-light: #8ac340;
-    --orange: #fe7f01;
-    --green-dark: #72b01d;
-    --green-deep: #3f7d20;
-    --text-color: #333;
-    --white: #fff;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--beige);
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-/* Conteneur global */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* En-tête */
-header {
-    background-color: var(--green-deep);
-    color: var(--white);
-    padding: 1rem 0;
-}
-
-header h1 {
-    display: inline-block;
-    font-size: 1.8rem;
-    color: var(--white);
-}
-
-nav {
-    float: right;
-}
-
-nav ul {
-    list-style: none;
+.home-page {
+    background-color: #ffe8b3;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .home-page .overlap-wrapper {
+    background-color: #ffe8b3;
+    width: 1440px;
+    height: 4867px;
+  }
+  
+  .home-page .overlap {
+    position: relative;
+    height: 4874px;
+    top: -7px;
+  }
+  
+  .home-page .main-page {
+    display: flex;
+    flex-direction: column;
+    width: 1440px;
+    height: 4874px;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .home-page .main {
+    position: relative;
+    bottom: 100px;
+    width: 1456px;
+    height: 4874px;
+    margin-right: -16.00px;
+  }
+  
+  .home-page .bloc-contact {
+    position: absolute;
+    width: 1443px;
+    height: 740px;
+    top: 3716px;
+    left: -1px;
+    background-color:#193129;
+    background-size: 100% 100%;
+  }
+  
+  .home-page .image {
+    position: absolute;
+    width: 461px;
+    height: 540px;
+    top: 117px;
+    left: 816px;
+  }
+  
+  .home-page .div {
+    position: absolute;
+    width: 599px;
+    height: 540px;
+    top: 117px;
+    left: 122px;
+    background-color: #ffa94d;
+    border-radius: 12px;
+    padding: 20px;
 }
 
-nav ul li {
-    margin-left: 1.5rem;
+.blocs-blancs {
+    position: relative; /* Important pour que le bouton se positionne par rapport à ce conteneur */
+    width: 100%;
+    height: 100%; /* ou une hauteur fixe si nécessaire */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 60px; /* Espace pour le bouton */
 }
 
-nav ul li a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-nav ul li a.login {
-    color: var(--orange-light);
-}
-
-nav ul li a.signup {
-    color: var(--green-light);
-}
-
-nav ul li a:hover {
-    color: var(--orange);
-}
-
-/* Section Hero */
-.hero {
-    background-color: var(--orange-light);
-    text-align: center;
-    padding: 4rem 2rem;
-    color: var(--text-color);
-}
-
-.hero-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--green-deep);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.btn-primary {
-    background-color: var(--green-light);
-    color: var(--white);
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    font-weight: bold;
+.blocs-blancs input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-.btn-primary:hover {
-    background-color: var(--green-dark);
+.blocs-blancs input:focus {
+    border-color: #0b1c16;
 }
 
-/* Pied de page */
-footer {
-    background-color: var(--green-dark);
-    color: var(--white);
+.bouton-send {
+    position: absolute;
+    bottom: 20px; /* Ajuste cette valeur pour placer le bouton */
+    left: 420px;
+    right: 20px;
+    padding: 12px 20px;
+    background-color: #193129;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bouton-send:hover {
+    background-color: #0b1c16;
+}
+
+  .home-page .message {
+    position: absolute;
+    width:500px;
+    height: 257px;
+    top: 129px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .home-page .text-wrapper {
+    position: absolute;
+    height: 24px;
+    top: 10px;
+    left: 23px;
+    font-family: "Plus Jakarta Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #0c513f;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .objet {
+    position: absolute;
+    width: 480px;
+    height: 26px;
+    top: 61px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .home-page .text-wrapper-2 {
+    position: absolute;
+    height: 24px;
+    top: 11px;
+    left: 26px;
+    font-family: "Plus Jakarta Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #0c513f;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .email {
+    position: absolute;
+    width: 480px;
+    height: 26px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .home-page .input {
+    position: absolute;
+    height: 24px;
+    top: 11px;
+    left: 26px;
+    font-family: "Plus Jakarta Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #0c513f;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .message {
+    resize: vertical; /* Permet le redimensionnement vertical par l'utilisateur */
+    min-height: 40px; /* Hauteur minimale */
+  }
+  
+  
+  .home-page .text-wrapper-3 {
+    position: relative;
+    width: 300px;
+    height: 72px;
+   
+    font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #193129;
+    font-size: 58px;
+    letter-spacing: -3.00px;
+    line-height: 72px;
+    white-space: nowrap;
+  }
+  
+  .home-page .footpage {
+    display: flex;
+    width: 1440px;
+    height: 418px;
+    align-items: flex-start;
+    gap: 83px;
+    padding: 0px 80px 0px 0px;
+    position: absolute;
+    top: 4456px;
+    left: -1px;
+    background-color: #000000;
+  }
+  
+  .home-page .logo {
+    position: relative;
+    width: 527px;
+    height: 330px;
+  }
+  
+  .home-page .foodlink {
+    position: absolute;
+    width: 284px;
+    height: 289px;
+    top: 41px;
+    left: 177px;
+  }
+  
+  .home-page .texte {
+    display: flex;
+    flex-direction: column;
+    width: 544px;
+    height: 455px;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 64px 0px 64px 16px;
+    position: relative;
+    margin-bottom: -37.00px;
+  }
+  
+  .home-page .food-link {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff66;
+    font-size: 14px;
+    letter-spacing: 3.00px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  
+  .home-page .ul {
+    position: relative;
+    width: 265px;
+    height: 49px;
+  }
+  
+  .home-page .text-wrapper-4 {
+    position: absolute;
+    width: 135px;
+    height: 21px;
+    top: 0;
+    left: 0;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .text-wrapper-5 {
+    position: absolute;
+    width: 104px;
+    height: 21px;
+    top: 48px;
+    left: 0;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .text-wrapper-6 {
+    position: absolute;
+    width: 97px;
+    height: 21px;
+    top: 96px;
+    left: 0;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .text-wrapper-7 {
+    width: 80px;
+    height: 21px;
+    top: 144px;
+    left: 0;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .a {
+    position: absolute;
+    width: 104px;
+    height: 28px;
+    top: 190px;
+    left: 0;
+  }
+  
+  .home-page .span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    left: 0;
+    background-color: #ff884d;
+    border-radius: 9999px;
+    border: 4px solid;
+    border-color: #ffffff66;
+  }
+  
+  .home-page .text-wrapper-8 {
+    position: absolute;
+    width: 83px;
+    height: 25px;
+    top: 0;
+    left: 24px;
+    font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .home-page .a-2 {
+    position: absolute;
+    width: 123px;
+    height: 28px;
+    top: 188px;
+    left: 147px;
+  }
+  
+  .home-page .svg {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 2px;
+    left: 0;
+    background-image: url(./img/frame-2.svg);
+    background-size: 100% 100%;
+  }
+  
+  .home-page .text-wrapper-9 {
+    position: absolute;
+    height: 28px;
+    top: -2px;
+    left: 24px;
+    font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .home-page .a-3 {
+    position: absolute;
+    width: 142px;
+    height: 61px;
+    top: 155px;
+    left: 293px;
+  }
+  
+  .home-page .vector {
+    position: absolute;
+    width: 15px;
+    height: 19px;
+    top: 39px;
+    left: 10px;
+  }
+  
+  .home-page .text-wrapper-10 {
+    position: absolute;
+    height: 28px;
+    top: 32px;
+    left: 35px;
+    font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .home-page .overlap-group {
+    position: absolute;
+    width: 1453px;
+    height: 3667px;
+    top: 18px;
+    left: -2px;
+  }
+  
+  .home-page .rectangle-beige-fond {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 2927px;
+    left: 1px;
+    background-color: #ffe8b3;
+  }
+  
+  .home-page .bloc-equipe {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 2927px;
+    left: 1px;
+  }
+  
+  .home-page .overlap-group-2 {
+    position: relative;
+    height: 837px;
+    background-image: url(./img/font-d-chir.png);
+    background-size: 100% 100%;
+  }
+  
+  .home-page .thomas {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 455px;
+    left: 317px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .img {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .p {
+    position: relative;
+    align-self: stretch;
+    height: 82px;
+    font-family: "Plus Jakarta Sans-Bold", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-}
+    line-height: 30px;
+  }
+  
+  .home-page .text-wrapper-11 {
+    font-weight: 700;
+    letter-spacing: 0.40px;
+  }
+  
+  .home-page .text-wrapper-12 {
+    font-family: "Ubuntu-Regular", Helvetica;
+    letter-spacing: 0.20px;
+  }
+  
+  .home-page .louis {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 406px;
+    left: 589px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-2 {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-color: #000000;
+    background-image: url(./img/image-7.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .mouchine {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 428px;
+    left: 864px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-3 {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-color: #000000;
+    background-image: url(./img/image-2.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .mouhcine-MAIMOUNI {
+    position: relative;
+    width: 239px;
+    height: 85px;
+    margin-right: -3.00px;
+    font-family: "Plus Jakarta Sans-Bold", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+  }
+  
+  .home-page .zakaria {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 391px;
+    left: 1140px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-4 {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-color: #000000;
+    background-image: url(./img/image.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .amine {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 70px;
+    left: 1143px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .marine {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 120px;
+    left: 864px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-5 {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-color: #000000;
+    background-image: url(./img/image-4.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .paul {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 86px;
+    left: 592px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-6 {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-color: #000000;
+    background-image: url(./img/image-3.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .wajih {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 148px;
+    left: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-7 {
+    position: relative;
+    align-self: stretch;
+    height: 85px;
+    font-family: "Plus Jakarta Sans-Bold", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+  }
+  
+  .home-page .isra {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: 288px;
+    align-items: flex-start;
+    padding: 3px;
+    position: absolute;
+    top: 317px;
+    left: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: #000000;
+  }
+  
+  .home-page .div-8 {
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-color: #000000;
+    background-image: url(./img/isra.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .home-page .text-wrapper-13 {
+    position: absolute;
+    height: 80px;
+    top: 44px;
+    left: 40px;
+    font-family: "Titan One-Regular", Helvetica;
+    font-weight: 400;
+    color: #193129;
+    font-size: 63px;
+    letter-spacing: -2.00px;
+    line-height: 80px;
+    white-space: nowrap;
+  }
+  
+  .home-page .resaux {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 1452px;
+    left: 13px;
+  }
+  
+  .home-page .overlap-2 {
+    position: relative;
+    height: 1442px;
+    top: 12px;
+    left: -12px;
+  }
+  
+  .home-page .page-verte {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 0;
+    left: 0;
+    background-color: #193129;
+  }
+  
+  .home-page .dchire-beige {
+    position: absolute;
+    width: 1440px;
+    height: 838px;
+    top: 604px;
+    left: 0;
+  }
+  
+  .home-page .text-wrapper-14 {
+    position: absolute;
+    width: 720px;
+    top: 100px;
+    left: 611px;
+    font-family: "Titan One-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 80px;
+    letter-spacing: -2.40px;
+    line-height: 96.0px;
+  }
+  
+  .home-page .sacs {
+    position: absolute;
+    width: 416px;
+    height: 478px;
+    top: 230px;
+    left: 1000px;
+  }
+  
+  .home-page .image-2 {
+    position: absolute;
+    width: 111px;
+    height: 111px;
+    top: 333px;
+    left: 600px;
+    object-fit: cover;
+  }
+  
+  .home-page .partenaires {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 2204px;
+    left: 2px;
+  }
+  
+  .home-page .overlap-3 {
+    position: relative;
+    height: 702px;
+  }
+  
+  .home-page .dechire-centre {
+    position: absolute;
+    width: 1440px;
+    height: 698px;
+    top: 4px;
+    left: 0;
+  }
+  
+  .home-page .dechir-bottom {
+    position: absolute;
+    width: 1440px;
+    height: 52px;
+    top: 603px;
+    left: 0;
+  }
+  
+  .home-page .dchire-top {
+    position: absolute;
+    width: 1440px;
+    height: 52px;
+    top: 0;
+    left: 0;
+  }
+  
+  .home-page .text-wrapper-15 {
+    position: absolute;
+    width: 718px;
+    top: 120px;
+    left: 602px;
+    font-family: "Titan One-Regular", Helvetica;
+    font-weight: 400;
+    color: #193129;
+    font-size: 78px;
+    text-align: center;
+    letter-spacing: -2.34px;
+    line-height: 93.6px;
+    white-space: nowrap;
+  }
+  
+  .home-page .logos {
+    position: absolute;
+    width: 1181px;
+    height: 364px;
+    top: 283px;
+    left: 129px;
+  }
+  
+  .home-page .intermarch-logo {
+    position: absolute;
+    width: 277px;
+    height: 47px;
+    top: 17px;
+    left: 692px;
+    object-fit: cover;
+  }
+  
+  .home-page .element-e-leclerc {
+    position: absolute;
+    width: 283px;
+    height: 66px;
+    top: 17px;
+    left: 336px;
+    object-fit: cover;
+  }
+  
+  .home-page .logo-carrefour-svg {
+    position: absolute;
+    width: 151px;
+    height: 119px;
+    top: 0;
+    left: 1030px;
+    object-fit: cover;
+  }
+  
+  .home-page .logo-geant-rvb {
+    position: absolute;
+    width: 258px;
+    height: 95px;
+    top: 5px;
+    left: 5px;
+    object-fit: cover;
+  }
+  
+  .home-page .linkee-logo {
+    position: absolute;
+    width: 269px;
+    height: 125px;
+    top: 164px;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .home-page .secours-populaire {
+    position: absolute;
+    width: 229px;
+    height: 221px;
+    top: 143px;
+    left: 318px;
+    object-fit: cover;
+  }
+  
+  .home-page .element-removebg {
+    position: absolute;
+    width: 242px;
+    height: 200px;
+    top: 164px;
+    left: 939px;
+    object-fit: cover;
+  }
+  
+  .home-page .tlchargement {
+    position: absolute;
+    width: 233px;
+    height: 180px;
+    top: 163px;
+    left: 643px;
+    object-fit: cover;
+  }
+  
+  .home-page .ecran-telephone-ici {
+    position: absolute;
+    width: 430px;
+    height: 872px;
+    top: 1544px;
+    left: 114px;
+  }
+  
+  .home-page .assos {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 737px;
+    left: 2px;
+  }
+  
+  .home-page .entreprise-asso {
+    position: relative;
+    height: 728px;
+    background-color: #648378;
+  }
+  
+  .home-page .boutons {
+    position: absolute;
+    width: 915px;
+    height: 68px;
+    top: 634px;
+    left: 262px;
+  }
+  
+  .home-page .bouton-asso {
+    width: 299px;
+    top: 3px;
+    left: 616px;
+    background-color: #193129;
+    border-radius: 8px;
+    position: absolute;
+    height: 65px;
+  }
+  .main-page .bouton-commerce {
+    width: 299px;
+    top: 3px;
+    left: 616px;
+    background-color: #193129;
+    border-radius: 8px;
+    position: absolute;
+    height: 65px;
+  }
+
+
+
+
+  .bouton-send 
+  {  position: auto;  width: 174px;  height: 35px;   }
+
+  
+  .home-page .text-wrapper-16 {
+    position: absolute;
+    height: 24px;
+    top: 19px;
+    left: 60px;
+    font-family: "Plus Jakarta Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .bouton-commerce {
+    width: 320px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 65px;
+  }
+  
+  .home-page .overlap-4 {
+    position: absolute;
+    width: 1366px;
+    height: 607px;
+    top: 8px;
+    left: 37px;
+  }
+  
+  .home-page .carte {
+    position: absolute;
+    width: 1366px;
+    height: 443px;
+    top: 164px;
+    left: 0;
+  }
+  
+  .home-page .entreprise {
+    position: absolute;
+    width: 623px;
+    height: 314px;
+    top: 134px;
+    left: 39px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid;
+    border-color: #193129;
+  }
+  
+  .home-page .texte-2 {
+    position: relative;
+    width: 302px;
+    height: 322px;
+    top: -13px;
+    left: 323px;
+  }
+  
+  .home-page .overlap-group-3 {
+    position: absolute;
+    width: 305px;
+    height: 309px;
+    top: 13px;
+    left: -9px;
+  }
+  
+  .home-page .div-wrapper {
+    position: absolute;
+    width: 305px;
+    height: 309px;
+    top: 0;
+    left: 0;
+    background-color: #ffe8b3;
+  }
+  
+  .home-page .votre-commerce-g-n {
+    position: absolute;
+    width: 238px;
+    height: 168px;
+    top: 54px;
+    left: 33px;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #0c513f;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 28px;
+  }
+  
+  .home-page .voir-plus {
+    top: 259px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6.72px;
+    position: absolute;
+    left: 33px;
+  }
+  
+  .home-page .voir-plus-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 3.00px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+  
+  .home-page .svg-2 {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background-image: url(./img/image.svg);
+    background-size: 100% 100%;
+  }
+  
+  .home-page .foodlink-entreprise-wrapper {
+    position: absolute;
+    width: 372px;
+    height: 370px;
+    top: -11px;
+    left: -381px;
+    background-color: #193129;
+  }
+  
+  .home-page .foodlink-entreprise {
+    position: absolute;
+    width: 329px;
+    height: 259px;
+    top: 24px;
+    left: 58px;
+    object-fit: cover;
+  }
+  
+  .home-page .asso {
+    position: absolute;
+    width: 623px;
+    height: 314px;
+    top: 134px;
+    left: 705px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid;
+    border-color: #193129;
+  }
+  
+  .home-page .foodlink-asso-wrapper {
+    position: absolute;
+    width: 343px;
+    height: 325px;
+    top: -11px;
+    left: 305px;
+    background-color: #193129;
+  }
+  
+  .home-page .foodlink-asso {
+    position: absolute;
+    width: 334px;
+    height: 272px;
+    top: 53px;
+    left: -16px;
+    object-fit: cover;
+  }
+  
+  .home-page .overlap-group-wrapper {
+    position: absolute;
+    width: 300px;
+    height: 290px;
+    top: 0;
+    left: 0;
+  }
+  
+  .home-page .overlap-group-4 {
+    position: relative;
+    width: 305px;
+    height: 309px;
+  }
+  
+  .home-page .text-wrapper-17 {
+    position: absolute;
+    width: 238px;
+    height: 140px;
+    top: 53px;
+    left: 28px;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #0c513f;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 28px;
+  }
+  
+  .home-page .voir-plus-3 {
+    top: 250px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6.72px;
+    position: absolute;
+    left: 33px;
+  }
+  
+  .home-page .svg-3 {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background-image: url(./img/frame.svg);
+    background-size: 100% 100%;
+  }
+  
+  .home-page .texte-3 {
+    position: absolute;
+    width: 1129px;
+    height: 278px;
+    top: 0;
+    left: 119px;
+  }
+  
+  .home-page .notre-site-est-le {
+    position: absolute;
+    width: 1309px;
+    height: 174px;
+    top: 101px;
+    left: -90px;
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #193129;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+  }
+  
+  .home-page .foodink-est-une {
+    position: absolute;
+    width: 1246px;
+    height: 91px;
+    top: 10px;
+    left: -59px;
+    font-family: "Plus Jakarta Sans-Bold", Helvetica;
+    font-weight: 700;
+    color: #193129;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 1.00px;
+    line-height: 30px;
+  }
+  
+  .home-page .ecran {
+    position: absolute;
+    width: 1440px;
+    height: 740px;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  
+  .home-page .overlap-5 {
+    position: relative;
+    width: 1436px;
+    height: 920px;
+    top: -167px;
+    left: 46px;
+  }
+  
+  .home-page .nuage {
+    position: absolute;
+    width: 1436px;
+    height: 920px;
+    top: 0;
+    left: 0;
+  }
+  
+  .home-page .layer {
+    position: absolute;
+    width: 371px;
+    height: 231px;
+    top: 0;
+    left: 808px;
+    transform: rotate(180deg);
+  }
+  
+  .home-page .group {
+    height: 231px;
+  }
+  
+  .home-page .overlap-group-5 {
+    position: relative;
+    width: 371px;
+    height: 231px;
+  }
+  
+  .home-page .group-wrapper {
+    position: absolute;
+    width: 371px;
+    height: 231px;
+    top: 0;
+    left: 0;
+  }
+  
+  .home-page .group-2 {
+    position: absolute;
+    width: 371px;
+    height: 63px;
+    top: 0;
+    left: 0;
+    transform: rotate(-180deg);
+  }
+  
+  .home-page .group-3 {
+    position: absolute;
+    width: 339px;
+    height: 51px;
+    top: 13px;
+    left: 18px;
+    transform: rotate(-180deg);
+  }
+  
+  .home-page .layer-2 {
+    position: absolute;
+    width: 311px;
+    height: 294px;
+    top: 14px;
+    left: 13px;
+  }
+  
+  .home-page .group-4 {
+    height: 294px;
+  }
+  
+  .home-page .overlap-group-6 {
+    position: relative;
+    width: 311px;
+    height: 290px;
+    top: 5px;
+  }
+  
+  .home-page .img-wrapper {
+    position: absolute;
+    width: 308px;
+    height: 290px;
+    top: 0;
+    left: 3px;
+  }
+  
+  .home-page .group-5 {
+    position: absolute;
+    width: 308px;
+    height: 141px;
+    top: 149px;
+    left: 0;
+  }
+  
+  .home-page .group-6 {
+    position: absolute;
+    width: 299px;
+    height: 128px;
+    top: 149px;
+    left: 0;
+  }
+  
+  .home-page .layer-3 {
+    position: absolute;
+    width: 276px;
+    height: 117px;
+    top: 451px;
+    left: 1094px;
+  }
+  
+  .home-page .group-7 {
+    height: 117px;
+  }
+  
+  .home-page .overlap-group-7 {
+    position: relative;
+    width: 276px;
+    height: 117px;
+  }
+  
+  .home-page .group-8 {
+    position: absolute;
+    width: 273px;
+    height: 117px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/group.png);
+    background-size: 100% 100%;
+  }
+  
+  .home-page .group-9 {
+    position: absolute;
+    width: 247px;
+    height: 100px;
+    top: 17px;
+    left: 29px;
+    background-image: url(./img/group-7.png);
+    background-size: 100% 100%;
+  }
+  
+  .home-page .fumee {
+    position: absolute;
+    width: 1230px;
+    height: 112px;
+    top: 808px;
+    left: 206px;
+  }
+  
+  .home-page .group-10 {
+    height: 112px;
+  }
+  
+  .home-page .group-11 {
+    position: relative;
+    width: 1230px;
+    height: 112px;
+  }
+  
+  .home-page .group-12 {
+    position: absolute;
+    width: 1188px;
+    height: 99px;
+    top: 0;
+    left: 0;
+  }
+  
+  .home-page .camion {
+    position: absolute;
+    width: 206px;
+    height: 109px;
+    top: 795px;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .home-page .text-wrapper-18 {
+    position: absolute;
+    width: 1116px;
+    height: 114px;
+    top: 654px;
+    left: 114px;
+    font-family: "Plus Jakarta Sans-Bold", Helvetica;
+    font-weight: 700;
+    color: #0c513f;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 2.00px;
+    line-height: 112px;
+    white-space: nowrap;
+  }
+  
+  .home-page .MAIN-TITLE {
+    position: absolute;
+    width: 786px;
+    height: 126px;
+    top: 517px;
+    left: 268px;
+    font-family: "Titan One-Regular", Helvetica;
+    font-weight: 400;
+    color: #193129;
+    font-size: 110px;
+    text-align: center;
+    letter-spacing: 2.00px;
+    line-height: 112px;
+    white-space: nowrap;
+  }
+  
+  .home-page .top-menu {
+    position: absolute;
+    width: 1315px;
+    height: 99px;
+    top: 60px;
+    left: 45px;
+  }
+  
+  .home-page .overlap-6 {
+    position: relative;
+    width: 897px;
+    height: 268px;
+    top: -21px;
+    left: 209px;
+  }
+  
+  .home-page .menu-droite {
+    position: absolute;
+    width: 444px;
+    height: 50px;
+    top: 72px;
+    left: 453px;
+    background-color: #ffffff;
+    border-radius: 9999px;
+  }
+  
+  .home-page .text-wrapper-19 {
+    position: absolute;
+    height: 24px;
+    top: 14px;
+    left: 199px;
+    font-family: "Plus Jakarta Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .text-wrapper-20 {
+    height: 24px;
+    top: 14px;
+    left: 331px;
+    font-family: "Plus Jakarta Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .menu-gauche {
+    position: absolute;
+    width: 394px;
+    height: 50px;
+    top: 69px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 9999px;
+  }
+  
+  .home-page .text-wrapper-21 {
+    position: absolute;
+    height: 24px;
+    top: 14px;
+    left: 18px;
+    font-family: "Plus Jakarta Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .text-wrapper-22 {
+    position: absolute;
+    height: 24px;
+    top: 14px;
+    left: 156px;
+    font-family: "Plus Jakarta Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .home-page .ellipse {
+    position: absolute;
+    width: 270px;
+    height: 268px;
+    top: 0;
+    left: 318px;
+    background-color: #ffffff;
+    border-radius: 135px / 134px;
+  }
+  
+  .home-page .logo-2 {
+    position: absolute;
+    width: 226px;
+    height: 226px;
+    top: 21px;
+    left: 340px;
+    object-fit: cover;
+  }

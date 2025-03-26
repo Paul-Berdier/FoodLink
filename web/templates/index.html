@@ -1,44 +1,289 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLink - Redistribution Alimentaire</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-</head>
-<body>
-    <!-- Navigation -->
-    <header>
-        <div class="container">
-            <h1>FoodLink</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="login">Login</a></li>
-                    <li><a href="#" class="signup">Signup</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<html>
 
-    <!-- Section principale -->
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Une nouvelle vie pour les aliments</h2>
-                <p>Rejoignez FoodLink pour réduire le gaspillage alimentaire et redistribuer les ressources là où elles sont nécessaires.</p>
-                <a href="#" class="btn-primary">En savoir plus</a>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="../static/index.css" />
+  </head>
+  <body>
+    <div class="home-page">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="main-page">
+            <div class="main">
+              <div class="bloc-contact">
+                <img class="image" src="img/image-5.png" />
+                <div class="div">
+                    <div class="text-wrapper-3">Contact</div>
+                    <br />
+                    <br />
+                  
+                  <div class="blocs-blancs">
+                  
+                    <textarea placeholder="message" type="text"  class="message" oninput="autoResize(this)"></textarea>
+
+                    <input class="objet" type="text" placeholder="Objet" />
+                    <input class="email" type="email" placeholder="Email" />
+                    
+           
+                   
+                  </div>
+                  <button class="bouton-send">Envoyer</button>
+                </div>
+                
+              </div>
+              <div class="footpage">
+                <div class="logo"><img class="foodlink" src="img/foodlink-3.png" /></div>
+                <div class="texte">
+                  <div class="food-link">FOOD LINK</div>
+                  <div class="ul">
+                    <div class="text-wrapper-4">Presentation</div>
+                    <div class="text-wrapper-5">Partenaires</div>
+                    <div class="text-wrapper-6">Equipe</div>
+                    <div class="text-wrapper-7">Contact</div>
+                    <div class="a">
+                      <div class="span"></div>
+                      <div class="text-wrapper-8">LinkedIn</div>
+                    </div>
+                    <div class="a-2">
+                      <div class="svg"></div>
+                      <div class="text-wrapper-9">Instagram</div>
+                    </div>
+                    <div class="a-3">
+                      <img class="vector" src="img/vector.svg" />
+                      <div class="text-wrapper-10">Facebook</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="overlap-group">
+                <div class="rectangle-beige-fond"></div>
+                <div class="bloc-equipe">
+                  <div class="overlap-group-2">
+                    <div class="thomas">
+                      <img class="img" src="img/div-2.png" />
+                      <p class="p">
+                        <span class="text-wrapper-11">Thomas HUBAUD<br /></span>
+                        <span class="text-wrapper-12">Data Architect</span>
+                      </p>
+                    </div>
+                    <div class="louis">
+                      <div class="div-2"></div>
+                      <p class="p">
+                        <span class="text-wrapper-11">Louis LAMBERT<br /></span>
+                        <span class="text-wrapper-12">Data Architect</span>
+                      </p>
+                    </div>
+                    <div class="mouchine">
+                      <div class="div-3"></div>
+                      <p class="mouhcine-MAIMOUNI">
+                        <span class="text-wrapper-11">Mouhcine MAIMOUNI <br /></span>
+                        <span class="text-wrapper-12">Dev Back-End</span>
+                      </p>
+                    </div>
+                    <div class="zakaria">
+                      <div class="div-4"></div>
+                      <p class="p">
+                        <span class="text-wrapper-11">Zakaria NAOUI<br /></span>
+                        <span class="text-wrapper-12">Dev Front-End</span>
+                      </p>
+                    </div>
+                    <div class="amine">
+                      <img class="img" src="img/div-3.png" />
+                      <p class="p">
+                        <span class="text-wrapper-11">Amine HIMICHE <br /></span>
+                        <span class="text-wrapper-12">Dev Front-End</span>
+                      </p>
+                    </div>
+                    <div class="marine">
+                      <div class="div-5"></div>
+                      <p class="p">
+                        <span class="text-wrapper-11">MarineGÜELL&nbsp;&nbsp;<br /></span>
+                        <span class="text-wrapper-12">Responsable Front-End</span>
+                      </p>
+                    </div>
+                    <div class="paul">
+                      <div class="div-6"></div>
+                      <p class="p">
+                        <span class="text-wrapper-11">Paul BERDIER&nbsp;&nbsp;<br /></span>
+                        <span class="text-wrapper-12">Responsable Back-End</span>
+                      </p>
+                    </div>
+                    <div class="wajih">
+                      <img class="img" src="img/div.png" />
+                      <p class="div-7">
+                        <span class="text-wrapper-11">Wajih BELLAHCEN <br /></span>
+                        <span class="text-wrapper-12">Data architect</span>
+                      </p>
+                    </div>
+                    <div class="isra">
+                      <div class="div-8"></div>
+                      <p class="div-7">
+                        <span class="text-wrapper-11">Isra GUESMI<br /></span>
+                        <span class="text-wrapper-12">Cheffe de projet</span>
+                      </p>
+                    </div>
+                    <div class="text-wrapper-13">Notre équipe</div>
+                  </div>
+                </div>
+                <div class="resaux">
+                  <div class="overlap-2">
+                    <div class="page-verte"></div>
+                    <img class="dchire-beige" src="img/d-chire-beige.png" />
+                    <p class="text-wrapper-14">Suivez nous sur les réseaux</p>
+                    <img class="sacs" src="img/sacs.png" />
+                    <a href="https://www.instagram.com/foodlink_toulouse/" target="_blank" rel="noopener noreferrer"
+                      ><img class="image-2" src="img/image-8.png"
+                    /></a>
+                  </div>
+                </div>
+                <div class="partenaires">
+                  <div class="overlap-3">
+                    <img class="dechire-centre" src="img/dechire-centre.svg" />
+                    <img class="dechir-bottom" src="img/dechir-bottom.png" />
+                    <img class="dchire-top" src="img/d-chire-top.png" />
+                    <div class="text-wrapper-15">Nos Partenaires</div>
+                    <div class="logos">
+                      <img class="intermarch-logo" src="img/intermarch-logo-2009-supermarkets-svg-2.png" />
+                      <img class="element-e-leclerc" src="img/1280px-e-leclerc-logo-svg-2.png" />
+                      <img class="logo-carrefour-svg" src="img/logo-carrefour-svg-2.png" />
+                      <img class="logo-geant-rvb" src="img/logo-geant-2015-rvb-2.png" />
+                      <img class="linkee-logo" src="img/linkee-logo-800x600-removebg-preview-1.png" />
+                      <img class="secours-populaire" src="img/secours-populaire-logo-svg-removebg-preview-1.png" />
+                      <img class="element-removebg" src="img/1511948840-removebg-preview-1.png" />
+                      <img class="tlchargement" src="img/t-l-chargement-removebg-preview-1.png" />
+                    </div>
+                  </div>
+                </div>
+                <img class="ecran-telephone-ici" src="img/ecran-telephone-ici-pour-etre-par-dessus-tout.png" />
+                <div class="assos">
+                  <div class="entreprise-asso">
+                    <div class="boutons">
+                        <a href="login.html" class="bouton-asso"><div class="text-wrapper-16">Association</div></a>
+                        <a href="login.html" class="bouton-commerce"><div class="text-wrapper-16">Commerce</div></a>
+                      </div>
+                     
+                    </div>
+                    <div class="overlap-4">
+                      <div class="carte">
+                        <div class="entreprise">
+                          <div class="texte-2">
+                            <div class="overlap-group-3">
+                              <div class="div-wrapper">
+                                <p class="votre-commerce-g-n">
+                                  Votre commerce génère du surplus alimentaire que vous êtes obligé de jeter, faute de
+                                  contact&nbsp;&nbsp;pour le récupérer :
+                                </p>
+                              </div>
+                              <div class="voir-plus">
+                                <div class="voir-plus-2">VOIR PLUS</div>
+                                <div class="svg-2"></div>
+                              </div>
+                            </div>
+                            <div class="foodlink-entreprise-wrapper">
+                              <img
+                                class="foodlink-entreprise"
+                                src="img/foodlink-entreprise-carre2-removebg-preview.png"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="asso">
+                          <div class="foodlink-asso-wrapper">
+                            <img class="foodlink-asso" src="img/foodlink-asso-carre2-removebg-preview.png" />
+                          </div>
+                          <div class="overlap-group-wrapper">
+                            <div class="overlap-group-4">
+                              <div class="div-wrapper">
+                                <p class="text-wrapper-17">
+                                  Votre association de secoure alimentaire peine à touver des sources de dons régulières
+                                  :
+                                </p>
+                              </div>
+                              <div class="voir-plus-3">
+                                <div class="voir-plus-2">VOIR PLUS</div>
+                                <div class="svg-3"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="texte-3">
+                        <p class="notre-site-est-le">
+                          Notre site est le premier au monde permettant le don ou la revante d&#39;invendus alimentaires
+                          à l’attentiondes entreprises et pour les associations de secoure alimentaire.<br />Pour
+                          correspondre aux besoins des commerces qui génèrent une grande quantité de surplus, elles sont
+                          accompagnées et aidées à gérer ces invendus en les prévoyant et en créant un lien direct avec
+                          les associations qui pourraient en bénéficier. <br />
+                          Les associations peuvent sauver de la nourriture, tout en bénéficiant d&#39;un excellent
+                          rapport qualité-prix dans les commerces de proximité, boulangeries et restaurants.
+                        </p>
+                        <p class="foodink-est-une">
+                          Foodink est une entreprise à impact social dont la mission est d&#39;inspirer et de donner les
+                          clés aux commerces afin de lutter contre le gaspillage alimentaire.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ecran">
+                  <div class="overlap-5">
+                    <div class="nuage">
+                      <div class="layer">
+                        <div class="group">
+                          <div class="overlap-group-5">
+                            <div class="group-wrapper"><img class="group-2" src="img/group-2.png" /></div>
+                            <img class="group-3" src="img/group-6.png" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="layer-2">
+                        <div class="group-4">
+                          <div class="overlap-group-6">
+                            <div class="img-wrapper"><img class="group-5" src="img/group-5.png" /></div>
+                            <img class="group-6" src="img/group-3.png" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="layer-3">
+                        <div class="group-7">
+                          <div class="overlap-group-7">
+                            <div class="group-8"></div>
+                            <div class="group-9"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fumee">
+                        <div class="group-10">
+                          <div class="group-11"><img class="group-12" src="img/group-4.png" /></div>
+                        </div>
+                      </div>
+                      <img class="camion" src="img/camion.png" />
+                    </div>
+                    <p class="text-wrapper-18">Ensemble pour un monde sans gaspillage alimentaire</p>
+                    <div class="MAIN-TITLE">FoodLink</div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
-    </main>
-
-    <!-- Pied de page -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 FoodLink. Tous droits réservés.</p>
+          </div>
+          <div class="top-menu">
+            <div class="overlap-6">
+              <div class="menu-droite">
+                <a class="text-wrapper-19" href="">Réseaux</a>
+                <a class="text-wrapper-20" href="">Contact</a>
+              </div>
+              <div class="menu-gauche">
+                <a class="text-wrapper-21" href="">Accueil</a>
+                <a class="text-wrapper-22" href="">Ma page</a>
+              </div>
+              <div class="ellipse"></div>
+              <img class="logo-2" src="img/logo-1.png" />
+            </div>
+          </div>
         </div>
-    </footer>
-</body>
+      </div>
+    </div>
+  </body>
 </html>
