@@ -1,15 +1,29 @@
-<!-- templates/header.html -->
-<header>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('index') }}">Accueil</a></li>
+<header class="top-menu">
+    <div class="overlap-10">
+        <!-- Left menu -->
+        <div class="menu-gauche">
+            <a class="text-wrapper-61" href="{{ url_for('index') }}">Accueil</a>
+            <a class="text-wrapper-62" href="#">FAQs</a>
+        </div>
+
+        <!-- Centered logo -->
+        <div class="ellipse">
+          <div class="ellipse-bg"></div>
+          <img class="logo" src="{{ url_for('static', filename='foodlink.png') }}" alt="Logo FoodLink">
+        </div>
+
+
+        <!-- Right menu -->
+        <div class="menu-droite">
+            <a class="text-wrapper-59" href="#">Blog</a>
+            <a class="text-wrapper-60" href="#">Contact</a>
             {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('profile') }}">Profil</a></li>
-                <li><a href="{{ url_for('logout') }}">Déconnexion</a></li>
+                <a class="text-wrapper-60" href="{{ url_for('profile') }}">Profil</a>
+                <a class="text-wrapper-60" href="{{ url_for('logout') }}">Déconnexion</a>
             {% else %}
-                <li><a href="{{ url_for('login') }}">Connexion</a></li>
-                <li><a href="{{ url_for('register') }}">Inscription</a></li>
+                <a class="text-wrapper-60" href="{{ url_for('login') }}">Connexion</a>
+                <a class="text-wrapper-60" href="{{ url_for('register') }}">Inscription</a>
             {% endif %}
-        </ul>
-    </nav>
+        </div>
+    </div>
 </header>
