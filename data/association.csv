@@ -1,0 +1,45 @@
+id;nom;coordonnees;ville;adresse;departement;adresse_mail;tel
+1;Epicerie du canal;"{""type"": ""Point"", ""coordinates"": [-1.64187, 48.185538]}";Betton;7 rue du Clos Paisible;Ille et Vilaine;epiceriecanal@gmail.com;07 55 61 68 91
+2;Epicerie sociale l'Escale;"{""type"": ""Point"", ""coordinates"": [-1.776944, 48.148691]}";Pacé;2 rue de la Chalotais;Ille et Vilaine;ccas@ville-pace.fr;
+3;Banque alimentaire;"{""type"": ""Point"", ""coordinates"": [-1.766783, 48.146216]}";Pacé;3 rue Jean-Marie Tullou;Ille et Vilaine;ba352@banquealimentaire.org;02 23 35 17 30
+4;Epicerie solidaire Le Panier de Grégoire;"{""type"": ""Point"", ""coordinates"": [-1.69175, 48.152383]}";Saint-Grégoire;4 rue Paul-Émile Victor;Ille et Vilaine;lepanierdegregoire@gmail.com;09 80 39 72 00
+5;L'Hermitage entraide et solidarité;"{""type"": ""Point"", ""coordinates"": [-1.807853, 48.128168]}";l'Hermitage;1 mail Francis Chouan;Ille et Vilaine;mairie@ville-lhermitage.fr;02 99 64 02 54
+6;Les Restos du Cœur - Centre d'activités RENNES DONELIERE;"{""type"": ""Point"", ""coordinates"": [-1.685792, 48.13032]}";Rennes;25 rue de la Donelière;Ille et Vilaine;ad35.siege@restosducoeur.org;02 99 23 70 30
+7;Secours populaire français - Antenne de Maurepas;"{""type"": ""Point"", ""coordinates"": [-1.663677, 48.125441]}";Rennes;32 rue de la Marbaudais;Ille et Vilaine;;02 99 38 00 50
+8;L'Étal convivial;"{""type"": ""Point"", ""coordinates"": [-1.663677, 48.125441]}";Rennes;32 rue de la Marbaudais;Ille et Vilaine;;
+9;Solid'Alim;"{""type"": ""Point"", ""coordinates"": [-1.63342, 48.12415]}";Rennes;20 avenue des Buttes de Coësmes;Ille et Vilaine;aeir-solidalim@insa-rennes.fr;
+10;EPIFREE;"{""type"": ""Point"", ""coordinates"": [-1.633702, 48.116791]}";Rennes;Allée de Beaulieu;Ille et Vilaine;epifreesolidaire.rennes1@gmail.com;
+11;Apodo;"{""type"": ""Point"", ""coordinates"": [-1.715466, 48.119862]}";Rennes;1 rue d'Armagnac;Ille et Vilaine;;
+12;Union Pirate Rennes 2;"{""type"": ""Point"", ""coordinates"": [-1.704046, 48.120899]}";Rennes;Place Recteur Henri Le Moal;Ille et Vilaine;contact@unionpirate.fr;
+13;L'épicerie gratuite;"{""type"": ""Point"", ""coordinates"": [-1.704046, 48.120899]}";Rennes;Place Recteur Henri Le Moal;Ille et Vilaine;epicerie.gratuite.r2@gmail.com;
+14;Cœurs Résistants - Village Alimentaire;"{""type"": ""Point"", ""coordinates"": [-1.646841, 48.116671]}";Rennes;4 Rue du Bois Perrin;Ille et Vilaine;cœurs.resistants@gmail.com;
+15;Union Pirate Rennes 1 et Rennes 2;"{""type"": ""Point"", ""coordinates"": [-1.671008, 48.117368]}";Rennes; 9 rue Jean Macé;Ille et Vilaine;unionpiraterennes1@gmail.com;07 69 94 54 03
+16;EPIFREE Rennes 1, L'épicerie gratuite;"{""type"": ""Point"", ""coordinates"": [-1.671331, 48.115882]}";Rennes;2 rue du Thabor;Ille et Vilaine;epifreesolidaire.rennes1@gmail.com;
+17;Les Glaneurs Rennais;"{""type"": ""Point"", ""coordinates"": [-1.683301, 48.112852]}";Rennes;Place des Lices;Ille et Vilaine;lesglaneursrennais@gmail.com;
+18;Secours Catholique;"{""type"": ""Point"", ""coordinates"": [-1.69965, 48.110286]}";Rennes;10 rue Louis Guilloux;Ille et Vilaine;illeetvilaine@secours-catholique.org;02 99 54 11 01
+19;Epicerie sociale Le P'tit Marché;"{""type"": ""Point"", ""coordinates"": [-1.715911, 48.107745]}";Rennes;146 B rue de Lorient;Ille et Vilaine;chantier.tiprop@asfad.fr;02 99 84 60 01
+20;Les Restos du Cœur de l'Ille-et-Vilaine;"{""type"": ""Point"", ""coordinates"": [-1.725925, 48.104697]}";Rennes;15 bis rue de la Roberdière;Ille et Vilaine;ad35.siege@restosducoeur.org;02 99 23 70 30
+21;Coeurs Résistants - site Faux-Pont;"{""type"": ""Point"", ""coordinates"": [-1.672782, 48.107293]}";Rennes;4 ruelle du Faux pont;Ille et Vilaine;asso@coeurs-resistants.org;
+22;Le Fourneau - Restaurant social Leperdit;"{""type"": ""Point"", ""coordinates"": [-1.696992, 48.104316]}";Rennes;5 rue Clémence Royer;Ille et Vilaine;restaurant.leperdit@ccasrennes.fr;02 99 67 37 30
+23;Frigo Troc du Centre Social Cleunay;"{""type"": ""Point"", ""coordinates"": [-1.705427, 48.100307]}";Rennes;49 rue Jules Lallemand;Ille et Vilaine;frigotroc@gmail.com;02 99 85 83 17
+24;Epicerie solidaire DUM;"{""type"": ""Point"", ""coordinates"": [-1.684225, 48.099268]}";Rennes;15 rue Lobineau;Ille et Vilaine;epiceriesocialedum@gmail.com;07 73 09 15 28
+25;Secours populaire français - Antenne des Veyettes;"{""type"": ""Point"", ""coordinates"": [-1.631995, 48.100193]}";Rennes;14 rue des Veyettes;Ille et Vilaine;contact@spf35.org;02 99 53 31 41
+26;Les Restos du Cœur - Centre d’activités RENNES ALMA;"{""type"": ""Point"", ""coordinates"": [-1.675912, 48.099415]}";Rennes;18 rue de l'Alma;Ille et Vilaine;ad35.alma@restosducoeur.org;02 23 30 28 50
+27;Croix-Rouge Française - unité locale de Rennes;"{""type"": ""Point"", ""coordinates"": [-1.634178, 48.096377]}";Rennes;4 rue du Breil;Ille et Vilaine;ul.rennes@croix-rouge.fr;02 99 67 75 70
+28;Épicerie sociale Soutien pour tous;"{""type"": ""Point"", ""coordinates"": [-1.681153, 48.092661]}";Rennes;19 square Charles Dullin;Ille et Vilaine;Ibenelboushaki9@gmail.com;06 78 32 41 91
+29;RestosBus - Place de la communauté;"{""type"": ""Point"", ""coordinates"": [-1.675708, 48.0927]}";Rennes;Place de la Communauté;Ille et Vilaine;ad35.siege@restosducoeur.org;02 99 23 70 30
+30;Epicerie sociale Ty Sol;"{""type"": ""Point"", ""coordinates"": [-1.658472, 48.08822]}";Rennes;7 boulevard de Yougoslavie;Ille et Vilaine;cs.ty-blosne@assoarcs.com;02 99 50 90 47
+31;Cuisine partagée et Frigo Troc Au Ptit Blosneur;"{""type"": ""Point"", ""coordinates"": [-1.651229, 48.086895]}";Rennes;15 avenue de Pologne;Ille et Vilaine;frigotroc@gmail.com;07 68 37 03 71
+32;Ty Souk - épicerie sociale;"{""type"": ""Point"", ""coordinates"": [-1.692664, 48.085221]}";Rennes;2 Place Albert Bayet;Ille et Vilaine;y.souk@outlook.fr;
+33;Frigo Troc MJC Bréquigny;"{""type"": ""Point"", ""coordinates"": [-1.691884, 48.084434]}";Rennes;15 avenue Georges Graff;Ille et Vilaine;frigotroc@gmail.com;02 99 85 83 17
+34;Centre de la Lande;"{""type"": ""Point"", ""coordinates"": [-1.713716, 48.080194]}";Saint-Jacques-de-la-Lande;10 rue François Mitterrand;Ille et Vilaine;centredelalande@epi-condorcet.fr;02 99 35 36 16
+35;Epicerie sociale EISSOR;"{""type"": ""Point"", ""coordinates"": [-1.779885, 48.091663]}";le Rheu;3 rue des Cormiers;Ille et Vilaine;contact.eissor@gmail.com;02 90 02 29 58
+36;Épicerie sociale et solidaire Sol'Epi;"{""type"": ""Point"", ""coordinates"": [-1.586585, 48.15999]}";Thorigné-Fouillard;Rue Nationale;Ille et Vilaine;solepi35235@hotmail.fr;02 99 04 54 54
+37;Epicerie sociale la Passerelle;"{""type"": ""Point"", ""coordinates"": [-1.591583, 48.123706]}";Cesson-Sévigné;45 boulevard de Dézerseul;Ille et Vilaine;raymonde.billaud@wanadoo.fr;
+38;Epicerie sociale Le Bocal;"{""type"": ""Point"", ""coordinates"": [-1.532229, 48.138839]}";Acigné;4 rue des Verdaudais;Ille et Vilaine;episocialeacigne@gmail.com;02 99 62 20 78
+39;Epicerie sociale Au Jardin secret;"{""type"": ""Point"", ""coordinates"": [-1.601863, 48.042511]}";Vern-sur-Seiche;43 rue de Châteaubriant;Ille et Vilaine;aujardinsecret@hotmail.fr;02 99 62 71 14
+40;Epicerie sociale;"{""type"": ""Point"", ""coordinates"": [-1.70704, 48.034946]}";Chartres-de-Bretagne;Avenue Constant Mérel;Ille et Vilaine;direction@ccaschartres35.fr;02 99 77 63 53
+41;Epicerie sociale Les Quatre Saisons;"{""type"": ""Point"", ""coordinates"": [-1.736995, 48.023101]}"; Bruz;4 bis avenue du Général de Gaulle;Ille et Vilaine;les4saisons.bruz@gmail.com;02 90 56 08 67
+42;Paniers solidaires CCAS;"{""type"": ""Point"", ""coordinates"": [-1.705101, 48.011716]}";Pont-Péan;2 avenue du Chemin Vert;Ille et Vilaine;martine.goupil@pontpean.fr;02 99 52 85 73
+43;Paniers solidaires Partage, Amitié, Solidarité;"{""type"": ""Point"", ""coordinates"": [-1.653158, 48.020841]}";Saint-Erblon;3 rue du Verger;Ille et Vilaine;epiceriesocialepas@gmail.com;07 50 32 23 67
+44;AFEL Espace social et culturel;"{""type"": ""Point"", ""coordinates"": [-1.853987, 48.272228]}";la Chapelle-Chaussée;14 rue du Lavoir;Ille et Vilaine;contact@afel.fr;02 99 45 86 31
