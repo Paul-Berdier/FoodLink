@@ -34,7 +34,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px; /* Largeur maximale du bloc */
-    height: 100%; /* Hauteur du bloc de connexion à 50% de la hauteur de la page */
+    height: 50%; /* Hauteur du bloc de connexion à 50% de la hauteur de la page */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centrer le contenu verticalement dans le bloc */

@@ -8,3 +8,6 @@ pytest-mock
 flask_mail
 itsdangerous
 dotenv
+email-validator
+flask-login
+requests

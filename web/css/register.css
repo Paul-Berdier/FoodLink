@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('test.jpg'); /* Image en fond */
+    background-size: cover; /* L'image couvrira toute la page */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Pas de répétition */
+    height: 100vh; /* Fond couvrant toute la hauteur */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    overflow-y: auto; /* Ajout de la possibilité de scroller */
+    animation: backgroundMove 10s infinite alternate; /* Animation subtile pour l'arrière-plan */
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: center;
+    }
+    100% {
+        background-position: bottom right; /* Déplacement subtil de l'image de fond */
+    }
+}
+
+.signup-container {
+    background-color: #D9CFBD; /* Fond blanc légèrement transparent */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    opacity: 0.9;
+    max-width: 500px; /* Largeur maximale */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligner le contenu en haut */
+    align-items: stretch;
+    max-height: 90vh; /* Hauteur ajustée */
+    margin-top: 1rem; /* Ajout d'un léger espace en haut */
+    overflow-y: auto; /* Scroll interne uniquement si nécessaire */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #45a049;
+    font-size: 1.8rem; /* Taille augmentée pour bien distinguer le titre */
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #45a049;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #fff;
+    opacity: 0.9;
+
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.signup-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}

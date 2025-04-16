@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <title>FoodLink - Mon Profil</title>
+</head>
+<body>
+
+        {% include 'header.html' %}
+
+    <h1>Mon Profil</h1>
+    <form method="POST">
+        <fieldset>
+            <legend>Modifier vos informations personnelles</legend>
+            <label for="email">Adresse Email :</label>
+            <input type="email" id="email" name="email" value="{{ user.mail_connexion }}" required>
+            <br>
+            <label for="password">Nouveau Mot de Passe :</label>
+            <input type="password" id="password" name="password" minlength="8">
+        </fieldset>
+
+        <fieldset>
+            <legend>Modifier les informations du commerce</legend>
+            <label for="nom_commerce">Nom du Commerce :</label>
+            <input type="text" id="nom_commerce" name="nom_commerce" value="{{ user.nom_commerce }}">
+            <br>
+            <label for="departement">Département :</label>
+            <input type="text" id="departement" name="departement" value="{{ user.departement }}">
+        </fieldset>
+
+        <fieldset>
+            <legend>Modifier les informations de l'association</legend>
+            {% if user.type_connexion == 'association' %}
+            <label for="nom_association">Nom de l'Association :</label>
+            <input type="text" id="nom_association" name="nom_association">
+            <br>
+            <label for="adresse_asso">Adresse :</label>
+            <input type="text" id="adresse_asso" name="adresse_asso">
+            <br>
+            <label for="num_tel_asso">Numéro de Téléphone :</label>
+            <input type="text" id="num_tel_asso" name="num_tel_asso">
+            {% else %}
+            <p>Vous n'avez pas accès à ces informations.</p>
+            {% endif %}
+        </fieldset>
+        {% if user.type_connexion == 'commerce' %}
+<fieldset>
+    <legend>Modifier les informations du commerce</legend>
+    <label for="type_commerce">Type de commerce :</label>
+    <input type="text" id="type_commerce" name="type_commerce" value="{{ user.type_commerce }}">
+    <br>
+    <label for="siret_commerce">Numéro SIRET :</label>
+    <input type="text" id="siret_commerce" name="siret_commerce" value="{{ user.siret }}">
+</fieldset>
+{% elif user.type_connexion == 'association' %}
+<fieldset>
+    <legend>Modifier les informations de l'association</legend>
+    <label for="siret_association">Numéro SIRET :</label>
+    <input type="text" id="siret_association" name="siret_association" value="{{ user.siret }}">
+</fieldset>
+{% endif %}
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+
+<!-- Messages flash affichés ici -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+</body>
+</html>

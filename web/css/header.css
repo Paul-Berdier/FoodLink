@@ -1,0 +1,95 @@
+/* --- HEADER BASE --- */
+.top-menu {
+  width: 100%;
+  background-color: #fff5c9;
+  padding: 20px 0;
+  position: relative;
+}
+
+.overlap-10 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+}
+
+/* --- MENU GAUCHE --- */
+.menu-gauche {
+  display: flex;
+  gap: 20px;
+}
+
+.text-wrapper-61,
+.text-wrapper-62 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1D3C34;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* --- LOGO CENTRÉ --- */
+.ellipse {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+  z-index: 2;
+}
+
+.ellipse-bg {
+  background-color: #fff5c9; /* Couleur claire */
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  z-index: 2;
+  position: relative;
+}
+
+
+/* --- MENU DROITE --- */
+.menu-droite {
+  display: flex;
+  gap: 20px;
+}
+
+.text-wrapper-59,
+.text-wrapper-60 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1D3C34;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+  .overlap-10 {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-gauche,
+  .menu-droite {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ellipse {
+    position: static;
+    transform: none;
+  }
+}

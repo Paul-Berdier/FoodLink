@@ -3,42 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLink - Redistribution Alimentaire</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>FoodLink - Together for a World Without Food Waste</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index1.css') }}"> <!-- Add the path to the CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>FoodLink</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="login">Login</a></li>
-                    <li><a href="#" class="signup">Signup</a></li>
-                </ul>
-            </nav>
+        <div class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo FoodLink" width="150" height="auto">
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#my-page">My Page</a></li>
+                <li><a href="#networks">Networks</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Section principale -->
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Une nouvelle vie pour les aliments</h2>
-                <p>Rejoignez FoodLink pour réduire le gaspillage alimentaire et redistribuer les ressources là où elles sont nécessaires.</p>
-                <a href="#" class="btn-primary">En savoir plus</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Pied de page -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 FoodLink. Tous droits réservés.</p>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>FoodLink</h1>
+            <p>Ensemble pour un monde sans gaspillage alimentaire</p>
         </div>
+    </section>
+
+    <!-- Mission & User Selection -->
+    <section id="mission">
+        <div class="mission-explanation">
+            <h2>Foodink est une entreprise à impact social dont la mission est d'inspirer et de donner les clés aux commerces afin de lutter contre le gaspillage alimentaire.</h2>
+            <p>Notre site est le premier au monde permettant le don ou la revante d'invendus alimentaires à l’attentiondes entreprises et pour les associations de secoure alimentaire.
+              Pour correspondre aux besoins des commerces qui génèrent une grande quantité de surplus, elles sont accompagnées et aidées à gérer ces invendus en les prévoyant et en créant un lien direct avec les associations qui pourraient en bénéficier. 
+               Les associations peuvent sauver de la nourriture, tout en bénéficiant d'un excellent rapport qualité-prix dans les commerces de proximité, boulangeries et restaurants.</p>
+        </div>
+        <div class="user-selection">
+            <div class="card business">
+                <img src="{{ url_for('static', filename='commerce-logo.png') }}" alt="Commerce Icon" width="150" height="auto">
+                <h3>Commerces</h3>
+                <p>Votre commerce génère du surplus alimentaire que vous êtes obligé de jeter, faute de contact  pour le récupérer :</p>
+                <a href="/businesses" class="btn">Voir plus</a>
+            </div>
+            <div class="card association">
+                <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Association Icon" width="150" height="auto">
+                <h3> Associations</h3>
+                <p>Votre association de secoure alimentaire peine à touver des sources de dons régulières :</p>
+                <a href="/associations" class="btn">Voir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social-media">
+        <h2>Follow us on social media</h2>
+        <div class="social-content">
+            <a href="https://www.instagram.com/foodlink_toulouse/" target="_blank">
+              
+              <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Instagram Profile" class="insta-image" width="150" height="auto">
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="team">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <!-- Team member placeholders -->
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Team Member"class="team_member" width="150" height="auto">
+                <h3>Jean Michel</h3>
+                <p>Role</p>
+            </div>
+            <div class="team-member">
+              <img src="placeholder-profile.png" alt="Team Member">
+              <h3>Jean Eude</h3>
+              <p>Role</p>
+            </div>
+           <div class="team-member">
+            <img src="placeholder-profile.png" alt="Team Member">
+            <h3>Name Surname</h3>
+            <p>Role</p>
+           </div>
+           <div class="team-member">
+            <img src="placeholder-profile.png" alt="Team Member">
+            <h3>Name Surname</h3>
+            <p>Role</p>
+          </div>
+          <div class="team-member">
+            <img src="placeholder-profile.png" alt="Team Member">
+            <h3>Jean Michel</h3>
+            <p>Role</p>
+        </div>
+        <div class="team-member">
+          <img src="placeholder-profile.png" alt="Team Member">
+          <h3>Jean Eude</h3>
+          <p>Role</p>
+        </div>
+       <div class="team-member">
+        <img src="placeholder-profile.png" alt="Team Member">
+        <h3>Name Surname</h3>
+        <p>Role</p>
+       </div>
+       <div class="team-member">
+        <img src="placeholder-profile.png" alt="Team Member">
+        <h3>Name Surname</h3>
+        <p>Role</p>
+      </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners">
+        <h2>Our Partners</h2>
+        <div class="partners-logos">
+            <!-- Partner logo placeholders -->
+            <a href="#" class="partner-logo">
+                <img src="partner1-logo.png" alt="Partner 1">
+            </a>
+            <!-- Add more partner logos -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="email" placeholder="Your Email" required>
+            <input type="text" placeholder="Subject" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <a href="mailto:contact@foodlink.com" class="btn">Send</a>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>FoodLink © 2025 - All rights reserved</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
