@@ -10,7 +10,7 @@ from smtplib import SMTPException
 from sqlalchemy.dialects.mysql import JSON
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
 from geocoding import get_coordinates
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from flask_bcrypt import Bcrypt
 from Register import validate_phone_number, validate_email, validate_siret
 from mail_truc import envoyer_mail
@@ -46,6 +46,15 @@ mail = Mail(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+# Dictionnaire FAQ simplifié
+faq_data = {
+    "qu’est-ce que foodlink": "FoodLink est une plateforme de redistribution alimentaire qui met en relation commerces, restaurants, particuliers et associations caritatives.",
+    "comment créer un compte commerce": "Cliquez sur 'S’inscrire' en haut à droite, sélectionnez 'Commerce' et remplissez le formulaire.",
+    "comment publier un don": "Connectez-vous à votre compte, cliquez sur 'Nouvelle offre', remplissez les infos et publiez.",
+    "comment commander des produits": "Connectez-vous en tant qu’association, allez dans 'Offres disponibles', filtrez, puis cliquez sur 'Commander'.",
+    "comment réinitialiser mon mot de passe": "Allez sur la page de connexion, cliquez sur 'Mot de passe oublié ?' et suivez les instructions.",
+    "le site ne charge pas": "Vérifiez votre connexion ou essayez un autre navigateur. Si c’est notre serveur, une alerte s’affichera."
+}
 
 class Produit(db.Model):
     __tablename__ = 'produit'
@@ -328,6 +337,16 @@ def reset_password_token(token):
             flash('Votre mot de passe a été réinitialisé.', 'success')
             return redirect(url_for('login'))
     return render_template('reset_password_token.html', email=email)
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    user_msg = request.json.get("message", "").lower()
+
+    for question, answer in faq_data.items():
+        if question in user_msg:
+            return jsonify({"response": answer})
+
+    return jsonify({"response": "Désolé, je n’ai pas compris la question. Vous pouvez nous contacter à contact@foodlink.com."})
 
 
 # Route pour afficher et modifier les informations du profil
