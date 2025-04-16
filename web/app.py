@@ -339,17 +339,24 @@ def reset_password_token(token):
     return render_template('reset_password_token.html', email=email)
 
 @app.route("/chat", methods=["POST"])
+
+
+from rapidfuzz import fuzz
+
+def is_similar(word, keywords, threshold=80):
+    return any(fuzz.partial_ratio(word, kw) >= threshold for kw in keywords)
+
 def get_response_from_article(question):
     question = question.lower()
 
-    if "foodlink" in question or "c'est quoi" in question or "à propos" in question:
+    if is_similar(question, ["foodlink", "c'est quoi", "à propos"]):
         return """📌 Qu’est-ce que FoodLink ?
 
-FoodLink est une plateforme de redistribution alimentaire qui met en relation **commerces, supermarchés, restaurants, particuliers disposant de **surplus alimentaire avec des **associations caritative dans le besoin de différents produits  .
+FoodLink est une plateforme de redistribution alimentaire qui met en relation **commerces, supermarchés, restaurants, particuliers** disposant de **surplus alimentaire** avec des **associations caritatives**.
 
-Elle vise à réduire le gaspillage alimentaire**, faciliter la logistique de redistribution et créer une chaîne solidaire locale."""
+Elle vise à **réduire le gaspillage alimentaire**, faciliter la logistique de redistribution et créer une chaîne solidaire locale."""
 
-    elif "compte" in question and ("créer" in question or "inscription" in question):
+    elif is_similar(question, ["créer un compte", "inscription", "s'inscrire"]):
         return """✍️ Comment créer un compte commerce ?
 
 1. Cliquez sur "S’inscrire" en haut à droite.
@@ -357,14 +364,14 @@ Elle vise à réduire le gaspillage alimentaire**, faciliter la logistique de re
 3. Remplissez les infos (email, SIRET, etc.).
 4. Validez et confirmez via l’email reçu."""
 
-    elif "mot de passe" in question or "réinitialiser" in question:
+    elif is_similar(question, ["mot de passe", "réinitialiser", "oublié"]):
         return """🔄 Comment réinitialiser mon mot de passe ?
 
 1. Page de connexion → “Mot de passe oublié ?”
 2. Entrez votre email.
 3. Suivez le lien reçu pour créer un nouveau mot de passe."""
 
-    elif "publier" in question or "don" in question:
+    elif is_similar(question, ["publier", "don", "mettre un don", "ajouter un don"]):
         return """🎁 Comment publier un don ?
 
 1. Connectez-vous à votre compte commerce.
@@ -372,60 +379,55 @@ Elle vise à réduire le gaspillage alimentaire**, faciliter la logistique de re
 3. Remplissez les infos (type, quantité, DLC).
 4. Cliquez sur Publier."""
 
-    elif "modifier" in question or "offre" in question:
+    elif is_similar(question, ["modifier", "offre", "changer don"]):
         return """📝 Peut-on modifier une offre après publication ?
 
 Oui. Depuis votre tableau de bord → “Mes Offres” → Modifier."""
 
-    elif "commander" in question or "association" in question:
+    elif is_similar(question, ["commander", "association", "réserver"]):
         return """🛒 Comment commander des produits ?
 
 1. Connectez-vous avec votre compte association.
 2. Allez sur “Offres disponibles”.
 3. Filtrez, puis cliquez sur “Commander” ou “Réserver”."""
 
-    elif "bug" in question or "problème" in question or "support" in question:
+    elif is_similar(question, ["bug", "problème", "support", "erreur"]):
         return """🛠️ Que faire si je rencontre un bug ?
 
 - Actualisez la page, videz le cache.
 - Si ça persiste : allez dans “Support”, décrivez le bug, et l’équipe vous répondra sous 24 à 48h."""
 
-    elif "historique" in question or ("suivre" in question and ("commande" in question or "dons" in question)):
+    elif is_similar(question, ["historique", "suivre", "commande", "dons"]):
         return """🧾 Peut-on suivre l’historique des dons/commandes ?
 
 Oui. Dans votre tableau de bord → onglet “Historique”."""
 
-    elif "ia" in question or "intelligence artificielle" in question:
+    elif is_similar(question, ["ia", "intelligence artificielle", "algorithme"]):
         return """🤖 Comment l’IA optimise les dons ?
 
 - Prédit les futurs surplus.
 - Propose les meilleures heures de collecte.
 - Répartit équitablement entre associations."""
 
-    elif "itinéraire" in question or "trajet" in question:
+    elif is_similar(question, ["itinéraire", "trajet", "chemin"]):
         return """🗺️ Comment sont calculés les itinéraires ?
 
 Un algorithme d’optimisation logistique choisit le trajet le plus court et le plus efficace."""
 
-    elif "données" in question or "confidentialité" in question or "sécurité" in question:
+    elif is_similar(question, ["données", "confidentialité", "sécurité", "rgpd"]):
         return """🔐 Mes données sont-elles protégées ?
 
 Oui. Données chiffrées, stockées sur serveurs sécurisés (Google Cloud), hébergées en Europe (RGPD)."""
 
-    elif "projet" in question or "pourquoi" in question:
+    elif is_similar(question, ["projet", "pourquoi", "objectif"]):
         return """🌟 C’est quoi FoodLink ?
 
 Une plateforme pour lutter contre le gaspillage alimentaire, aider les associations et valoriser les dons locaux."""
 
     else:
-        return "Désolé, je n’ai pas compris la question. Vous pouvez nous contacter à contact@foodlink.com."
+        return "❓ Désolé, je n’ai pas compris la question. Vous pouvez nous contacter à contact@foodlink.com."
 
 
-
-def chat():
-    user_msg = request.json.get("message", "")
-    response = get_response_from_article(user_msg)
-    return jsonify({"response": response})
 
 
 # Route pour afficher et modifier les informations du profil
