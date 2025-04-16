@@ -396,16 +396,16 @@ header nav ul li a {
   transform: translateY(30px);
 }
 
-.team-member:nth-child(1) {
-  transition-delay: 0.2s;
+.team-member:nth-child(3n+1) {
+  transition-delay: 0.1s;
 }
 
-.team-member:nth-child(2) {
-  transition-delay: 0.4s;
+.team-member:nth-child(3n+2) {
+  transition-delay: 0.3s;
 }
 
-.team-member:nth-child(3) {
-  transition-delay: 0.6s;
+.team-member:nth-child(3n+3) {
+  transition-delay: 0.5s;
 }
 
 .team-visible .team-member {
@@ -436,10 +436,12 @@ header nav ul li a {
 .team-member h3 {
   color: #1D3C34;
   margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .team-member p {
   color: #37745F;
+  font-size: 0.9rem;
 }
 
 /* Partners Section */
@@ -624,13 +626,29 @@ footer nav ul li a:hover {
 }
 
 /* Responsive Design */
+@media (max-width: 1100px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .team-member img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 @media (max-width: 900px) {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .partners-logos {
-    gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 2rem auto 0;
   }
 }
 
@@ -680,10 +698,6 @@ footer nav ul li a:hover {
     max-width: 90%;
   }
   
-  .team-grid {
-    gap: 1.5rem;
-  }
-  
   #mission, #social-media, #team, #partners, #contact {
     padding: 4rem 1.5rem;
   }
@@ -704,10 +718,6 @@ footer nav ul li a:hover {
   
   .mission-explanation h2 {
     font-size: 1.5rem;
-  }
-  
-  .team-grid {
-    grid-template-columns: 1fr;
   }
   
   .hero-buttons {
