@@ -6,12 +6,14 @@
     <title>FoodLink - Connexion</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
+    {% include 'header.html' %}
 
-        {% include 'header.html' %}
-
+    <!-- Conteneur de connexion -->
     <div class="login-container">
         <h2>Connexion</h2>
         <form action="{{ url_for('login') }}" method="POST">
@@ -30,17 +32,30 @@
             <a href="{{ url_for('register') }}" class="signup">Inscription</a>
         </div>
     </div>
-    <div>
-<!-- Messages flash affichés ici -->
+
+    <!-- Messages flash -->
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            <ul>
+            <ul class="flash-messages">
                 {% for category, message in messages %}
                     <li class="{{ category }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
-        </div>
+
+    <script>
+        // Masquer les messages flash après 5 secondes
+        setTimeout(() => {
+            const flashMessages = document.querySelectorAll('.flash-messages li');
+            flashMessages.forEach(message => {
+                message.style.opacity = '0';
+                message.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 500);
+            });
+        }, 5000);
+    </script>
 </body>
 </html>

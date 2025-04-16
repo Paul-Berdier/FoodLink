@@ -466,7 +466,8 @@ header nav ul li a {
 .partners-logos {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  align-items: center;
+  gap: 3rem;
   margin-top: 2rem;
   flex-wrap: wrap;
   opacity: 0;
@@ -480,11 +481,16 @@ header nav ul li a {
 }
 
 .partner-logo {
-  background-color: #f9f9f9;
+  background-color: white;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 150px;
 }
 
 .partner-logo:hover {
@@ -493,10 +499,13 @@ header nav ul li a {
 }
 
 .partners-logos img {
-  max-height: 80px;
-  max-width: 150px;
+  max-height: 120px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
   transition: transform 0.3s;
-  filter: grayscale(100%);
+  filter: grayscale(30%);
+  object-fit: contain;
 }
 
 .partner-logo:hover img {

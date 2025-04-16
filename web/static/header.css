@@ -127,6 +127,89 @@
   width: 90%;
 }
 
+/* --- BURGER MENU --- */
+.burger-button {
+  display: none;
+  background-color: #1D3C34;
+  border: none;
+  cursor: pointer;
+  padding: 8px 15px;
+  position: relative;
+  z-index: 1002;
+  margin-left: 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.burger-text {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  display: block;
+}
+
+.burger-button.active {
+  background-color: #FFA94D;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFE8B3;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 50px;
+  height: 100%;
+}
+
+.mobile-nav-link {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1D3C34;
+  text-decoration: none;
+  margin: 15px 0;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: white;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
+}
+
+.mobile-nav-link:hover {
+  background-color: #1D3C34;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* --- BODY NO SCROLL --- */
+body.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /* --- RESPONSIVE --- */
 @media screen and (max-width: 990px) {
   .menu-gauche,
@@ -175,20 +258,39 @@
     padding: 15px 0;
   }
   
+  .menu-container {
+    display: none;
+  }
+  
+  .burger-button {
+    display: block;
+  }
+  
   .container-logo {
     width: 120px;
     height: 120px;
-    margin: 0 auto 10px;
+    margin: 0 auto;
+    order: 0;
   }
   
   .top-menu.scrolled .container-logo {
     width: 80px;
     height: 80px;
+    margin: 0 auto;
   }
   
   .overlap-10 {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 15px;
+  }
+  
+  .menu-gauche {
+    order: -1;
+  }
+  
+  .menu-droite {
+    order: 1;
   }
 
   .menu-container {
@@ -199,9 +301,9 @@
   
   .menu-gauche,
   .menu-droite {
-    margin: 0 auto;
+    margin: 0;
     width: auto;
-    max-width: 90%;
+    max-width: 45%;
   }
   
   .nav-link {
