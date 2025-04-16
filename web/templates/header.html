@@ -1,28 +1,24 @@
 <header class="top-menu">
     <div class="overlap-10">
         <!-- Left menu -->
-        <div class="menu-gauche">
-            <a class="text-wrapper-61" href="{{ url_for('index') }}">Accueil</a>
-            <a class="text-wrapper-62" href="#">FAQs</a>
+        <div class="menu-container menu-gauche">
+            <a class="nav-link" href="{{ url_for('index') }}">Accueil</a>
+            <a class="nav-link" href="#">Le concept</a>
         </div>
 
         <!-- Centered logo -->
-        <div class="ellipse">
-          <div class="ellipse-bg"></div>
-          <img class="logo" src="{{ url_for('static', filename='foodlink.png') }}" alt="Logo FoodLink" width="150" height="auto">
+        <div class="container-logo">
+            <img class="logo" src="{{ url_for('static', filename='foodlink.png') }}" alt="Logo FoodLink">
         </div>
 
-
         <!-- Right menu -->
-        <div class="menu-droite">
-            <a class="text-wrapper-59" href="#">Blog</a>
-            <a class="text-wrapper-60" href="#">Contact</a>
+        <div class="menu-container menu-droite">
+            <a class="nav-link" href="#contact">Contact</a>
             {% if current_user.is_authenticated %}
-                <a class="text-wrapper-60" href="{{ url_for('profile') }}">Profil</a>
-                <a class="text-wrapper-60" href="{{ url_for('logout') }}">Déconnexion</a>
+                <a class="nav-link" href="{{ url_for('profile') }}">Profil</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">Déconnexion</a>
             {% else %}
-                <a class="text-wrapper-60" href="{{ url_for('login') }}">Connexion</a>
-                <a class="text-wrapper-60" href="{{ url_for('register') }}">Inscription</a>
+                <a class="nav-link" href="{{ url_for('login') }}">Connection</a>
             {% endif %}
         </div>
     </div>
