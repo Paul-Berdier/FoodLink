@@ -8,6 +8,7 @@ from itsdangerous import URLSafeTimedSerializer
 from dotenv import load_dotenv
 from smtplib import SMTPException
 from sqlalchemy.dialects.mysql import JSON
+import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
 from geocoding import get_coordinates
 from flask import render_template, flash, redirect, url_for, request, jsonify
@@ -416,6 +417,11 @@ def historique():
 #login_required
 def aliments():
     return render_template('aliments.html')
+
+
+@app.context_processor
+def inject_now():
+    return {'now': datetime.datetime.now()}
 
 
 if __name__ == '__main__':

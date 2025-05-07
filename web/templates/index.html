@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLink - Together for a World Without Food Waste</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index1.css') }}"> <!-- Add the path to the CSS file -->
+
+    <title>FoodLink - Ensemble pour un monde sans gaspillage alimentaire</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
-
-
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
 </head>
 <body>
     <!-- Header -->
+
+    {% include 'header.html' %}
+
+    <!-- Flash Messages -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+=======
     <header>
         <div class="logo">
           <img src="{{ url_for('static', filename='css/logo.jpeg') }}" alt="Logo FoodLink" width="150" height="auto">
@@ -25,133 +42,266 @@
         </nav>
     </header>
 
+
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
             <h1>FoodLink</h1>
             <p>Ensemble pour un monde sans gaspillage alimentaire</p>
+            <div class="hero-buttons">
+                {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('login') }}" class="btn btn-primary">Connexion</a>
+                    <a href="#role-selection" class="btn btn-secondary">Inscription</a>
+                {% else %}
+                    <a href="{{ url_for('profile') }}" class="btn btn-primary">Mon profil</a>
+                {% endif %}
+            </div>
         </div>
     </section>
 
     <!-- Mission & User Selection -->
     <section id="mission">
         <div class="mission-explanation">
-            <h2>Foodink est une entreprise à impact social dont la mission est d'inspirer et de donner les clés aux commerces afin de lutter contre le gaspillage alimentaire.</h2>
-            <p>Notre site est le premier au monde permettant le don ou la revante d'invendus alimentaires à l’attentiondes entreprises et pour les associations de secoure alimentaire.
+            <h2>FoodLink est une entreprise à impact social dont la mission est d'inspirer et de donner les clés aux commerces afin de lutter contre le gaspillage alimentaire.</h2>
+            <p>Notre site est le premier au monde permettant le don ou la revente d'invendus alimentaires à l'attention des entreprises et pour les associations de secours alimentaire.
               Pour correspondre aux besoins des commerces qui génèrent une grande quantité de surplus, elles sont accompagnées et aidées à gérer ces invendus en les prévoyant et en créant un lien direct avec les associations qui pourraient en bénéficier. 
-               Les associations peuvent sauver de la nourriture, tout en bénéficiant d'un excellent rapport qualité-prix dans les commerces de proximité, boulangeries et restaurants.</p>
+              Les associations peuvent sauver de la nourriture, tout en bénéficiant d'un excellent rapport qualité-prix dans les commerces de proximité, boulangeries et restaurants.</p>
         </div>
-        <div class="user-selection">
+        <div id="role-selection" class="user-selection">
             <div class="card business">
                 <img src="{{ url_for('static', filename='commerce-logo.png') }}" alt="Commerce Icon" width="150" height="auto">
                 <h3>Commerces</h3>
-                <p>Votre commerce génère du surplus alimentaire que vous êtes obligé de jeter, faute de contact  pour le récupérer :</p>
-                <a href="/businesses" class="btn">Voir plus</a>
+                <p>Votre commerce génère du surplus alimentaire que vous êtes obligé de jeter, faute de contact pour le récupérer :</p>
+                <a href="{{ url_for('register') }}?role=commerce" class="btn">S'inscrire en tant que commerce</a>
             </div>
             <div class="card association">
                 <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Association Icon" width="150" height="auto">
-                <h3> Associations</h3>
-                <p>Votre association de secoure alimentaire peine à touver des sources de dons régulières :</p>
-                <a href="/associations" class="btn">Voir plus</a>
+                <h3>Associations</h3>
+                <p>Votre association de secours alimentaire peine à trouver des sources de dons régulières :</p>
+                <a href="{{ url_for('register') }}?role=association" class="btn">S'inscrire en tant qu'association</a>
             </div>
         </div>
     </section>
 
     <!-- Social Media Section -->
     <section id="social-media">
-        <h2>Follow us on social media</h2>
+        <h2>Suivez-nous sur les réseaux sociaux</h2>
         <div class="social-content">
             <a href="https://www.instagram.com/foodlink_toulouse/" target="_blank">
-              
-              <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Instagram Profile" class="insta-image" width="150" height="auto">
+              <img src="{{ url_for('static', filename='Instagram_icon.webp') }}" alt="Instagram Profile" class="insta-image" width="150" height="auto">
             </a>
         </div>
     </section>
 
     <!-- Our Team Section -->
     <section id="team">
-        <h2>Our Team</h2>
+        <h2>Notre Équipe</h2>
         <div class="team-grid">
-            <!-- Team member placeholders -->
+            <!-- Membres de l'équipe -->
             <div class="team-member">
-                <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Team Member"class="team_member" width="150" height="auto">
-                <h3>Jean Michel</h3>
-                <p>Role</p>
+                <img src="{{ url_for('static', filename='photos/equipe/isra_GUESMI.png') }}" alt="Isra GUESMI" class="team_member">
+                <h3>Isra GUESMI</h3>
+                <p>Cheffe de projet</p>
             </div>
             <div class="team-member">
-              <img src="placeholder-profile.png" alt="Team Member">
-              <h3>Jean Eude</h3>
-              <p>Role</p>
+                <img src="{{ url_for('static', filename='photos/equipe/Louis_LAMBERT.png') }}" alt="Louis LAMBERT" class="team_member">
+                <h3>Louis LAMBERT</h3>
+                <p>Responsable data</p>
             </div>
-           <div class="team-member">
-            <img src="placeholder-profile.png" alt="Team Member">
-            <h3>Name Surname</h3>
-            <p>Role</p>
-           </div>
-           <div class="team-member">
-            <img src="placeholder-profile.png" alt="Team Member">
-            <h3>Name Surname</h3>
-            <p>Role</p>
-          </div>
-          <div class="team-member">
-            <img src="placeholder-profile.png" alt="Team Member">
-            <h3>Jean Michel</h3>
-            <p>Role</p>
-        </div>
-        <div class="team-member">
-          <img src="placeholder-profile.png" alt="Team Member">
-          <h3>Jean Eude</h3>
-          <p>Role</p>
-        </div>
-       <div class="team-member">
-        <img src="placeholder-profile.png" alt="Team Member">
-        <h3>Name Surname</h3>
-        <p>Role</p>
-       </div>
-       <div class="team-member">
-        <img src="placeholder-profile.png" alt="Team Member">
-        <h3>Name Surname</h3>
-        <p>Role</p>
-      </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Thomas_HUBAUD.png') }}" alt="Thomas HUBAUD" class="team_member">
+                <h3>Thomas HUBAUD</h3>
+                <p>Développeur Data</p>
+            </div>
+
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Mohcine_MAIMOUNI.png') }}" alt="Mohcine MAIMOUNI" class="team_member">
+                <h3>Mouhcine MAIMOUNI</h3>
+                <p>Expert Prompteur Développeur</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Paul_BERDIER.png') }}" alt="Paul BERDIER" class="team_member">
+                <h3>Paul BERDIER</h3>
+                <p>Responsable back-end</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Wajih_BELLAHCEN.png') }}" alt="Wajih BELLAHCEN" class="team_member">
+                <h3>Wajih BELLAHCEN</h3>
+                <p>il est là</p>
+            </div>
+
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Marine_GUELL.png') }}" alt="Marine GUELL" class="team_member">
+                <h3>Marine GÜELL</h3>
+                <p>Responsable front-end</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Zakaria_NAOUI.png') }}" alt="Zakaria NAOUI" class="team_member">
+                <h3>Zakaria NAOUI</h3>
+                <p>Développeur front-end</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='photos/equipe/Amine_HIMICHE.png') }}" alt="Amine HIMICHE" class="team_member">
+                <h3>Amine HIMICHE</h3>
+                <p>Responsable communication</p>
+            </div>
         </div>
     </section>
 
     <!-- Partners Section -->
     <section id="partners">
-        <h2>Our Partners</h2>
+        <h2>Ils nous font confiance</h2>
         <div class="partners-logos">
-            <!-- Partner logo placeholders -->
+            <!-- Logos des partenaires -->
             <a href="#" class="partner-logo">
-                <img src="partner1-logo.png" alt="Partner 1">
+                <img src="{{ url_for('static', filename='photos/partenaires/casino.png') }}" alt="Casino" width="150" height="auto">
             </a>
-            <!-- Add more partner logos -->
+            <a href="#" class="partner-logo">
+                <img src="{{ url_for('static', filename='photos/partenaires/croix rouge.png') }}" alt="Croix Rouge" width="150" height="auto">
+            </a>
+            <a href="#" class="partner-logo">
+                <img src="{{ url_for('static', filename='photos/partenaires/intermarché.png') }}" alt="Intermarché" width="150" height="auto">
+            </a>
+            <a href="#" class="partner-logo">
+                <img src="{{ url_for('static', filename='photos/partenaires/linkee.png') }}" alt="Linkee" width="150" height="auto">
+            </a>
+            <a href="#" class="partner-logo">
+                <img src="{{ url_for('static', filename='photos/partenaires/Secours_populaire.png') }}" alt="Secours Populaire" width="150" height="auto">
+            </a>
+            <a href="#" class="partner-logo">
+                <img src="{{ url_for('static', filename='photos/partenaires/E.Leclerc.png') }}" alt="E.Leclerc" width="150" height="auto">
+            </a>
+            <a href="#" class="partner-logo">
+                <img src="{{ url_for('static', filename='photos/partenaires/les resto du coeur.png') }}" alt="Les Restos du Coeur" width="150" height="auto">
+            </a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact</h2>
-        <form>
-            <input type="email" placeholder="Your Email" required>
-            <input type="text" placeholder="Subject" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <a href="mailto:contact@foodlink.com" class="btn">Send</a>
+        <form action="mailto:contact@foodlink.com" method="post" enctype="text/plain" id="contact-form">
+            <input type="email" name="email" placeholder="Votre Email" required>
+            <input type="text" name="subject" placeholder="Sujet" required>
+            <textarea name="message" placeholder="Votre Message" required></textarea>
+            <button type="submit" class="btn">Envoyer</button>
         </form>
+        <div id="form-success" class="scale-in" style="display: none; margin-top: 2rem;">
+            <h3 style="color: #FFA94D; margin-bottom: 1rem;">Message envoyé avec succès!</h3>
+            <p>Nous vous répondrons dans les plus brefs délais.</p>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>FoodLink © 2025 - All rights reserved</p>
+        <p>FoodLink © {{ now.year }} - Tous droits réservés</p>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#partners">Partners</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#team">Équipe</a></li>
+                <li><a href="#partners">Partenaires</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </footer>
-
-    <script src="script.js"></script>
+    
+    <script>
+        // Gestion du header qui rétrécit au scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.top-menu');
+            const body = document.body;
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                body.classList.add('scrolled-page');
+            } else {
+                header.classList.remove('scrolled');
+                body.classList.remove('scrolled-page');
+            }
+        });
+    
+        // Script pour le défilement en douceur vers les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Masquer les messages flash après 5 secondes
+        setTimeout(() => {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(message => {
+                message.style.opacity = '0';
+                message.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 500);
+            });
+        }, 5000);
+        
+        // Animations au scroll
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight * 0.75) &&
+                rect.bottom >= 0
+            );
+        }
+        
+        function handleScrollAnimation() {
+            // Mission section
+            const missionSection = document.getElementById('mission');
+            if (isElementInViewport(missionSection) && !missionSection.classList.contains('mission-visible')) {
+                missionSection.classList.add('mission-visible');
+            }
+            
+            // Social media section
+            const socialSection = document.getElementById('social-media');
+            if (isElementInViewport(socialSection) && !document.body.classList.contains('social-visible')) {
+                document.body.classList.add('social-visible');
+            }
+            
+            // Team section
+            const teamSection = document.getElementById('team');
+            if (isElementInViewport(teamSection) && !document.body.classList.contains('team-visible')) {
+                document.body.classList.add('team-visible');
+            }
+            
+            // Partners section
+            const partnersSection = document.getElementById('partners');
+            if (isElementInViewport(partnersSection) && !document.body.classList.contains('partners-visible')) {
+                document.body.classList.add('partners-visible');
+            }
+            
+            // Contact section
+            const contactSection = document.getElementById('contact');
+            if (isElementInViewport(contactSection) && !document.body.classList.contains('contact-visible')) {
+                document.body.classList.add('contact-visible');
+            }
+        }
+        
+        // Exécuter l'animation au chargement et au scroll
+        window.addEventListener('load', handleScrollAnimation);
+        window.addEventListener('scroll', handleScrollAnimation);
+        
+        // Gestion du formulaire de contact
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        
+        contactForm.addEventListener('submit', function(event) {
+            // Affichage du message de succès
+            // Note: étant donné que nous utilisons mailto:, cela va ouvrir le client email
+            // Dans une vraie implémentation, vous utiliseriez AJAX pour envoyer le formulaire
+            setTimeout(() => {
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
+            }, 1000);
+        });
+    </script>
 </body>
 </html>

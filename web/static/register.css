@@ -1,0 +1,248 @@
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Plus Jakarta Sans-Regular", Helvetica;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: #FFE8B3;
+    color: #1D3C34;
+    background-image: url('test.jpg'); /* Image en fond */
+    background-size: cover; /* L'image couvrira toute la page */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Pas de répétition */
+    height: 100vh; /* Fond couvrant toute la hauteur */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    overflow-y: auto; /* Ajout de la possibilité de scroller */
+    animation: backgroundMove 10s infinite alternate; /* Animation subtile pour l'arrière-plan */
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: center;
+    }
+    100% {
+        background-position: bottom right; /* Déplacement subtil de l'image de fond */
+    }
+}
+
+/* Conteneur principal */
+.signup-container {
+    max-width: 700px;
+    margin: 200px auto 50px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Titre */
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1D3C34;
+    font-size: 2rem;
+    position: relative;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: #FFA94D;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Formulaire */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Pour les champs qui prennent toute la largeur */
+form > div:nth-child(1),
+form > div:nth-child(2),
+#type_commerce_field {
+    grid-column: span 2;
+}
+
+label {
+    font-weight: bold;
+    color: #37745F;
+}
+
+input, select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #FFA94D;
+    box-shadow: 0 0 0 2px rgba(255, 169, 77, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Bouton d'inscription */
+.signup-btn {
+    background-color: #FFA94D;
+    color: #1D3C34;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    grid-column: span 2;
+    width: 50%;
+    justify-self: center;
+    margin-top: 20px;
+}
+
+.signup-btn:hover {
+    background-color: #FF9630;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.signup-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Options supplémentaires */
+.options {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.options a {
+    color: #37745F;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.options a:hover {
+    color: #FFA94D;
+    transform: translateY(-2px);
+    display: inline-block;
+}
+
+/* Messages flash */
+.flash-messages {
+    list-style: none;
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .signup-container {
+        margin: 150px 20px 40px;
+        padding: 30px 20px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    form > div:nth-child(1),
+    form > div:nth-child(2),
+    #type_commerce_field,
+    .signup-btn {
+        grid-column: span 1;
+    }
+
+    .signup-btn {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .signup-container {
+        margin-top: 120px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
