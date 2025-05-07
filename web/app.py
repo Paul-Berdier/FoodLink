@@ -340,14 +340,95 @@ def reset_password_token(token):
     return render_template('reset_password_token.html', email=email)
 
 @app.route("/chat", methods=["POST"])
-def chat():
-    user_msg = request.json.get("message", "").lower()
 
-    for question, answer in faq_data.items():
-        if question in user_msg:
-            return jsonify({"response": answer})
 
-    return jsonify({"response": "Désolé, je n’ai pas compris la question. Vous pouvez nous contacter à contact@foodlink.com."})
+from rapidfuzz import fuzz
+
+def is_similar(word, keywords, threshold=80):
+    return any(fuzz.partial_ratio(word, kw) >= threshold for kw in keywords)
+
+def get_response_from_article(question):
+    question = question.lower()
+
+    if is_similar(question, ["foodlink", "c'est quoi", "à propos"]):
+        return """📌 Qu’est-ce que FoodLink ?
+
+FoodLink est une plateforme de redistribution alimentaire qui met en relation **commerces, supermarchés, restaurants, particuliers** disposant de **surplus alimentaire** avec des **associations caritatives**.
+
+Elle vise à **réduire le gaspillage alimentaire**, faciliter la logistique de redistribution et créer une chaîne solidaire locale."""
+
+    elif is_similar(question, ["créer un compte", "inscription", "s'inscrire"]):
+        return """✍️ Comment créer un compte commerce ?
+
+1. Cliquez sur "S’inscrire" en haut à droite.
+2. Choisissez “Commerce”.
+3. Remplissez les infos (email, SIRET, etc.).
+4. Validez et confirmez via l’email reçu."""
+
+    elif is_similar(question, ["mot de passe", "réinitialiser", "oublié"]):
+        return """🔄 Comment réinitialiser mon mot de passe ?
+
+1. Page de connexion → “Mot de passe oublié ?”
+2. Entrez votre email.
+3. Suivez le lien reçu pour créer un nouveau mot de passe."""
+
+    elif is_similar(question, ["publier", "don", "mettre un don", "ajouter un don"]):
+        return """🎁 Comment publier un don ?
+
+1. Connectez-vous à votre compte commerce.
+2. Cliquez sur “Ajouter un don”.
+3. Remplissez les infos (type, quantité, DLC).
+4. Cliquez sur Publier."""
+
+    elif is_similar(question, ["modifier", "offre", "changer don"]):
+        return """📝 Peut-on modifier une offre après publication ?
+
+Oui. Depuis votre tableau de bord → “Mes Offres” → Modifier."""
+
+    elif is_similar(question, ["commander", "association", "réserver"]):
+        return """🛒 Comment commander des produits ?
+
+1. Connectez-vous avec votre compte association.
+2. Allez sur “Offres disponibles”.
+3. Filtrez, puis cliquez sur “Commander” ou “Réserver”."""
+
+    elif is_similar(question, ["bug", "problème", "support", "erreur"]):
+        return """🛠️ Que faire si je rencontre un bug ?
+
+- Actualisez la page, videz le cache.
+- Si ça persiste : allez dans “Support”, décrivez le bug, et l’équipe vous répondra sous 24 à 48h."""
+
+    elif is_similar(question, ["historique", "suivre", "commande", "dons"]):
+        return """🧾 Peut-on suivre l’historique des dons/commandes ?
+
+Oui. Dans votre tableau de bord → onglet “Historique”."""
+
+    elif is_similar(question, ["ia", "intelligence artificielle", "algorithme"]):
+        return """🤖 Comment l’IA optimise les dons ?
+
+- Prédit les futurs surplus.
+- Propose les meilleures heures de collecte.
+- Répartit équitablement entre associations."""
+
+    elif is_similar(question, ["itinéraire", "trajet", "chemin"]):
+        return """🗺️ Comment sont calculés les itinéraires ?
+
+Un algorithme d’optimisation logistique choisit le trajet le plus court et le plus efficace."""
+
+    elif is_similar(question, ["données", "confidentialité", "sécurité", "rgpd"]):
+        return """🔐 Mes données sont-elles protégées ?
+
+Oui. Données chiffrées, stockées sur serveurs sécurisés (Google Cloud), hébergées en Europe (RGPD)."""
+
+    elif is_similar(question, ["projet", "pourquoi", "objectif"]):
+        return """🌟 C’est quoi FoodLink ?
+
+Une plateforme pour lutter contre le gaspillage alimentaire, aider les associations et valoriser les dons locaux."""
+
+    else:
+        return "❓ Désolé, je n’ai pas compris la question. Vous pouvez nous contacter à contact@foodlink.com."
+
+
 
 
 # Route pour afficher et modifier les informations du profil
