@@ -1,0 +1,233 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Titre principal */
+#hero h1 {
+  font-family: 'Titan One', cursive;
+  font-size: 4rem;
+  color: #1D3C34;
+  margin: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans-Regular", Helvetica;
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .logo img {
+  max-height: 50px;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: 1rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #1D3C34;
+}
+
+/* Hero Section */
+#hero {
+  background-color: #FFE8B3;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 4rem;
+  color: #1D3C34;
+}
+
+#hero p {
+  font-size: 1.5rem;
+  color: #37745F;
+}
+
+/* Mission Section */
+#mission {
+  background-color: #1D3C34;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.user-selection {
+  display: flex;
+  color: #1D3C34;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.user-selection .card {
+  background-color: white;
+  color: #1D3C34;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #FFA94D;
+  color:  #1D3C34;;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+/* Social Media Section */
+#social-media {
+  background-color: #1D3C34;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.social-content img {
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* Team Section */
+#team {
+  background-color: #FFE8B3;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-member {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.team-member img {
+  max-width: 200px;
+  border-radius: 50%;
+}
+
+/* Partners Section */
+#partners {
+  background-color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.partners-logos img {
+  max-height: 100px;
+}
+
+/* Contact Section */
+#contact {
+  background-color: #37745F;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input, 
+form textarea {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+}
+
+form textarea {
+  height: 150px;
+}
+
+/* Footer */
+footer {
+  background-color: #1D3C34;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+footer nav ul li {
+  margin: 0 1rem;
+}
+
+footer nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-selection, 
+  .team-grid, 
+  .partners-logos {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .user-selection .card,
+  .team-member,
+  .partners-logos img {
+      width: 100%;
+      max-width: 300px;
+  }
+
+  header {
+      flex-direction: column;
+  }
+
+  header nav ul {
+      margin-top: 1rem;
+  }
+}

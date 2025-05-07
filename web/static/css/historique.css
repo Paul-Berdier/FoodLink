@@ -1,0 +1,151 @@
+.history-container {
+    background-color: #0d4a3a;
+    border-radius: 8px;
+    padding: 24px;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.history-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.history-item {
+    margin-bottom: 16px;
+    background-color: #1a6356;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.history-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 12px;
+    padding: 16px;
+    align-items: center;
+}
+
+.association, .products, .date {
+    font-weight: 500;
+}
+
+.voir-plus-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.history-details {
+    background-color: #1a6356;
+    padding: 16px;
+    border-top: 1px solid #0d4a3a;
+}
+
+.details-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.details-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+    /* background-color: #0d4a3a; */
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .history-row {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .association {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .products {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .date {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .voir-plus-btn {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+    }
+
+    .details-header, .details-row {
+        font-size: 12px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffeeba;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px 0 60px;
+}
+
+.hidden {
+    display: none;
+}
+
+.selected {
+    background-color: #f0f0f0;
+}

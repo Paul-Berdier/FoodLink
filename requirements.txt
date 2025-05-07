@@ -11,3 +11,4 @@ dotenv
 email-validator
 flask-login
 requests
+folium

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire des dons - Food Link</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/aliments.css') }}">
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<main>
+    <div class="container">
+        <div class="donation-container">
+            <h1>Faire des dons</h1>
+
+            <div class="donation-table">
+                <div class="table-header">
+                    <div class="header-item">PRODUITS</div>
+                    <div class="header-item">QUANTITÉ</div>
+                    <div class="header-item">DLC</div>
+                    <div class="header-item"></div>
+                </div>
+
+                <div class="product-row">
+                    <div class="product-name">BAGUETTE</div>
+                    <div class="product-quantity">21</div>
+                    <div class="product-dlc">26/02/2025</div>
+                    <div class="product-status">
+                        <div class="status-check">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-row">
+                    <div class="product-name">PLAT PRÉPARÉ</div>
+                    <div class="product-quantity">16</div>
+                    <div class="product-dlc">03/09/2025</div>
+                    <div class="product-status">
+                        <div class="status-check">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-row">
+                    <div class="product-name">RIZ</div>
+                    <div class="product-quantity">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <div class="product-dlc">
+                        <button class="dlc-btn">+</button>
+                    </div>
+                    <div class="product-status">
+                        <button class="finish-btn">TERMINER</button>
+                    </div>
+                </div>
+
+                <div class="product-row">
+                    <div class="product-name">LAIT</div>
+                    <div class="product-quantity">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <div class="product-dlc">
+                        <button class="dlc-btn">+</button>
+                    </div>
+                    <div class="product-status">
+                        <button class="finish-btn">TERMINER</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-product-container">
+                <button class="add-product-btn">
+                    <span class="plus-icon">+</span>
+                    AJOUTER PRODUIT
+                </button>
+            </div>
+
+            <div class="finish">
+                <div class="finish-container">
+                    <button class="main-finish-btn">TERMINER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
