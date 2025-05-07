@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Link - Plateforme de dons alimentaires</title>
-    <link rel="stylesheet" href="../css/entreprise.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/entreprise.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/highcharts.js"></script>
 </head>
 <body>
+
+{% include 'header.html' %}
 
 <main>
     <div class="container main-container">
@@ -90,7 +92,7 @@
     </div>
 </main>
 
-<div id="footer-placeholder"></div>
+{% include 'footer.html' %}
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -156,12 +158,6 @@
                 data: [40, 30, 35, 25, 30, 30]
             }]
         });
-
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
     });
 </script>
 </body>
