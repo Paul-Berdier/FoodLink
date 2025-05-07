@@ -412,6 +412,11 @@ def association():
 def historique():
     return render_template('historique.html')
 
+@app.route('/aliments', methods=['GET', 'POST'])
+#login_required
+def aliments():
+    return render_template('aliments.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
