@@ -1,73 +1,85 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialise la carte
-    const map = L.map('map').setView([43.6045, 1.444], 12); // Coordonnées de Toulouse
+    // Initialisation de la carte
+    const map = L.map('map').setView([43.6047, 1.4442], 13); // Coordonnées de Toulouse
 
+    // Ajout de la couche OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    function createMarkerIcon(color, text) {
-        return L.divIcon({
-            className: `map-marker marker-${text.toLowerCase()}`,
-            html: text,
-            iconSize: [80, 30],
-            iconAnchor: [40, 15]
-        });
-    }
-
-    const markers = [
-        { position: [43.6165, 1.4263], icon: createMarkerIcon('#ffc0cb', 'Leclerc'), name: 'Leclerc' },
-        { position: [43.6045, 1.4440], icon: createMarkerIcon('#add8e6', 'La Mie Câline'), name: 'La Mie Câline' },
-        { position: [43.6112, 1.4550], icon: createMarkerIcon('#ffff00', 'Carrefour'), name: 'Carrefour' },
-        { position: [43.5986, 1.4323], icon: createMarkerIcon('#ffa07a', 'Auchan'), name: 'Auchan' },
-        { position: [43.5879, 1.4467], icon: createMarkerIcon('#00ffaa', 'Casino'), name: 'Casino' }
+    // Liste des commerces avec leurs coordonnées
+    const commerces = [
+        {
+            name: "Carrefour",
+            lat: 43.6047,
+            lng: 1.4442,
+            address: "2 ALL. ÉMILE ZOLA, 31750 BLAGNAC"
+        },
+        {
+            name: "Leclerc",
+            lat: 43.6147,
+            lng: 1.4542,
+            address: "2 ALL. ÉMILE ZOLA, 31750 BLAGNAC"
+        },
+        {
+            name: "Auchan",
+            lat: 43.5947,
+            lng: 1.4342,
+            address: "ZAC DES, RUE ANNA POLITKOVSKAÏA, 31000 TOULOUSE"
+        }
     ];
 
-    markers.forEach(marker => {
-        L.marker(marker.position, { icon: marker.icon })
+    // Ajouter les marqueurs pour chaque commerce
+    commerces.forEach(commerce => {
+        const marker = L.marker([commerce.lat, commerce.lng])
             .addTo(map)
-            .bindPopup(`<b>${marker.name}</b><br>Cliquez pour voir les produits disponibles.`);
-    });
+            .bindPopup(`
+                <strong>${commerce.name}</strong><br>
+                ${commerce.address}
+            `);
 
-    const storeItems = document.querySelectorAll('.store-item');
-
-    storeItems.forEach((item, index) => {
-        item.addEventListener('click', function() {
-            storeItems.forEach(i => i.classList.remove('selected'));
-            this.classList.add('selected');
-
-            if (index < markers.length) {
-                map.setView(markers[index].position, 14);
-                L.popup()
-                    .setLatLng(markers[index].position)
-                    .setContent(`<b>${this.querySelector('.store-name').textContent}</b><br>Cliquez pour voir les produits disponibles.`)
-                    .openOn(map);
+        // Ajouter un gestionnaire d'événements pour le clic sur les éléments de la liste
+        const storeItems = document.querySelectorAll('.store-item');
+        storeItems.forEach(item => {
+            if (item.querySelector('.store-name').textContent === commerce.name) {
+                item.addEventListener('click', () => {
+                    map.setView([commerce.lat, commerce.lng], 15);
+                    marker.openPopup();
+                });
             }
         });
     });
 
-    const storeProducts = document.querySelectorAll('.store-products');
-
-    storeProducts.forEach((product, index) => {
-        setTimeout(() => {
-            product.style.opacity = '0';
-            product.style.transform = 'translateY(20px)';
-            product.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
-            setTimeout(() => {
-                product.style.opacity = '1';
-                product.style.transform = 'translateY(0)';
-            }, 50);
-        }, index * 200);
+    // Gestionnaire pour les filtres
+    const filterGroups = document.querySelectorAll('.filter-group');
+    filterGroups.forEach(group => {
+        group.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
     });
 
-    const filterGroups = document.querySelectorAll('.filter-group');
-
-    filterGroups.forEach(filter => {
-        filter.addEventListener('click', function() {
-            this.classList.toggle('active');
-
-            alert(`Filtre ${this.querySelector('.filter-label').textContent} sélectionné`);
+    // Gestionnaire pour la recherche
+    const searchInput = document.querySelector('.search-input');
+    const searchButton = document.querySelector('.search-button');
+    
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const storeItems = document.querySelectorAll('.store-item');
+        
+        storeItems.forEach(item => {
+            const storeName = item.querySelector('.store-name').textContent.toLowerCase();
+            if (storeName.includes(searchTerm)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
         });
+    }
+
+    searchButton.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
     });
 });

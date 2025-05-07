@@ -1,3 +1,8 @@
+{% if not extends_base %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+<script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
+{% endif %}
+
 <header class="top-menu">
     <div class="overlap-10">
         <!-- Left menu -->
