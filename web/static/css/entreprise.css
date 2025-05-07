@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    flex-grow: 1;
+    background-color: #ffeeba;
+    padding: 20px 0 60px;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.food-card, .history-card {
+    background-color: #0d4a3a;
+    color: white;
+    padding: 24px;
+}
+
+.counter-card {
+    background-color: white;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.food-table {
+    margin-bottom: 20px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.col {
+    background-color: #1a6356;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.voir-plus-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.counter {
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: #0d4a3a;
+}
+
+.counter-label {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+}
+
+.chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+}
+
+.bar {
+    width: 16px;
+    background-color: #0d4a3a;
+    border-radius: 4px 4px 0 0;
+}
+
+.history-table {
+    margin-bottom: 20px;
+}
+
+.history-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.col-name, .col-data {
+    background-color: #1a6356;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.counter-card h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #122520;
+    font-family: 'Arial Black', 'Helvetica', sans-serif;
+}
+
+.counter {
+    font-size: 80px;
+    font-weight: 900;
+    color: #122520;
+    line-height: 1;
+    text-align: left;
+    margin-bottom: 0;
+    font-family: 'Arial Black', 'Helvetica', sans-serif;
+}
+
+.counter-label {
+    font-size: 32px;
+    font-weight: 900;
+    color: #122520;
+    text-align: left;
+    margin-top: 0;
+    font-family: 'Arial Black', 'Helvetica', sans-serif;
+}
+
+.counter-card {
+    padding: 30px;
+    display: flex;
+}
+
+.highcharts-legend text {
+    font-size: 12px !important;
+    font-family: Arial, sans-serif !important;
+}
+
+.highcharts-legend-item rect {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+}
+
+#chartContainer {
+    margin-top: 15px;
+}

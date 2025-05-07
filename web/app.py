@@ -397,6 +397,26 @@ def profile():
 
     return render_template('profile.html', user=user)
 
+@app.route('/entreprise', methods=['GET', 'POST'])
+#@login_required
+def entreprise():
+    return render_template('entreprise.html')
+
+@app.route('/association', methods=['GET', 'POST'])
+#@login_required
+def association():
+    return render_template('association.html')
+
+@app.route('/historique', methods=['GET', 'POST'])
+#login_required
+def historique():
+    return render_template('historique.html')
+
+@app.route('/aliments', methods=['GET', 'POST'])
+#login_required
+def aliments():
+    return render_template('aliments.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
