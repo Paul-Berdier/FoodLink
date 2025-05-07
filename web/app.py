@@ -402,6 +402,15 @@ def profile():
 def entreprise():
     return render_template('entreprise.html')
 
+@app.route('/association', methods=['GET', 'POST'])
+#@login_required
+def association():
+    return render_template('association.html')
+
+@app.route('/historique', methods=['GET', 'POST'])
+#login_required
+def historique():
+    return render_template('historique.html')
 
 
 if __name__ == '__main__':
