@@ -7,7 +7,7 @@ pytest
 pytest-mock
 flask_mail
 itsdangerous
-dotenv
+python-dotenv
 email-validator
 flask-login
 requests
