@@ -397,6 +397,12 @@ def profile():
 
     return render_template('profile.html', user=user)
 
+@app.route('/entreprise', methods=['GET', 'POST'])
+#@login_required
+def entreprise():
+    return render_template('entreprise.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
