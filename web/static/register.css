@@ -12,6 +12,7 @@ body {
     overflow-x: hidden;
     background-color: #FFE8B3;
     color: #1D3C34;
+    padding-top: 80px; /* Ajout d'un padding-top pour compenser la hauteur du header */
     background-image: url('test.jpg'); /* Image en fond */
     background-size: cover; /* L'image couvrira toute la page */
     background-position: center; /* Centrer l'image */
@@ -19,7 +20,7 @@ body {
     height: 100vh; /* Fond couvrant toute la hauteur */
     display: flex;
     justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
+    align-items: flex-start; /* Changé de center à flex-start */
     overflow-y: auto; /* Ajout de la possibilité de scroller */
     animation: backgroundMove 10s infinite alternate; /* Animation subtile pour l'arrière-plan */
 }
@@ -36,7 +37,7 @@ body {
 /* Conteneur principal */
 .signup-container {
     max-width: 700px;
-    margin: 200px auto 50px;
+    margin: 50px auto; /* Modification de la marge supérieure */
     background-color: white;
     border-radius: 15px;
     padding: 40px;

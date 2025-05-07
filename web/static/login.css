@@ -11,11 +11,12 @@ body {
     overflow-x: hidden;
     background-color: #FFE8B3;
     color: #1D3C34;
+    padding-top: 80px;
 }
 
 .login-container {
     max-width: 500px;
-    margin: 200px auto 50px;
+    margin: 50px auto;
     background-color: white;
     border-radius: 15px;
     padding: 40px;

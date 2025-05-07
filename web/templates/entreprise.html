@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Link - Plateforme de dons alimentaires</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/entreprise.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/highcharts.js"></script>
+    <title>FoodLink - Entreprise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='entreprise.css') }}">
 </head>
 <body>
 
 {% include 'header.html' %}
+
+<!-- Script pour le header -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.top-menu');
+        
+        function handleScroll() {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        handleScroll();
+        
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    });
+</script>
 
 <main>
     <div class="container main-container">

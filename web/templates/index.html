@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='index1.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
 </head>
 <body>
     <!-- Header -->
@@ -69,13 +69,13 @@
         </div>
         <div id="role-selection" class="user-selection">
             <div class="card business">
-                <img src="{{ url_for('static', filename='commerce-logo.png') }}" alt="Commerce Icon" width="150" height="auto">
+                <img src="{{ url_for('static', filename='img/commerce-logo.png') }}" alt="Commerce Icon" width="150" height="auto">
                 <h3>Commerces</h3>
                 <p>Votre commerce génère du surplus alimentaire que vous êtes obligé de jeter, faute de contact pour le récupérer :</p>
                 <a href="{{ url_for('register') }}?role=commerce" class="btn">S'inscrire en tant que commerce</a>
             </div>
             <div class="card association">
-                <img src="{{ url_for('static', filename='association-logo.png') }}" alt="Association Icon" width="150" height="auto">
+                <img src="{{ url_for('static', filename='img/association-logo.png') }}" alt="Association Icon" width="150" height="auto">
                 <h3>Associations</h3>
                 <p>Votre association de secours alimentaire peine à trouver des sources de dons régulières :</p>
                 <a href="{{ url_for('register') }}?role=association" class="btn">S'inscrire en tant qu'association</a>
@@ -88,7 +88,7 @@
         <h2>Suivez-nous sur les réseaux sociaux</h2>
         <div class="social-content">
             <a href="https://www.instagram.com/foodlink_toulouse/" target="_blank">
-              <img src="{{ url_for('static', filename='Instagram_icon.webp') }}" alt="Instagram Profile" class="insta-image" width="150" height="auto">
+              <img src="{{ url_for('static', filename='img/Instagram_icon.webp') }}" alt="Instagram Profile" class="insta-image" width="150" height="auto">
             </a>
         </div>
     </section>

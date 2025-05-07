@@ -1,107 +1,133 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLink - Inscription</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Header -->
-    {% include 'header.html' %}
+{% extends "base.html" %}
 
-    <!-- Conteneur d'inscription -->
-    <div class="signup-container">
-        <h2>Inscription</h2>
-        <form method="POST" action="{{ url_for('register') }}">
-            <div>
-                <label for="email">Email :</label>
-                <input type="email" name="email" id="email" placeholder="Votre adresse email" required>
-            </div>
-            <div>
-                <label for="password">Mot de passe :</label>
-                <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
-            </div>
-            <div>
-                <label for="role">Type d'utilisateur :</label>
-                <select name="role" id="role" required>
-                    <option value="association">Association</option>
-                    <option value="commerce">Commerce</option>
-                </select>
-            </div>
-            <div>
-                <label for="nom">Nom de l'entreprise :</label>
-                <input type="text" name="nom" id="nom" placeholder="Nom de votre entreprise" required>
-            </div>
-            <div>
-                <label for="siret">SIRET :</label>
-                <input type="text" name="siret" id="siret" placeholder="Numéro SIRET" required>
-            </div>
-            <div>
-                <label for="adresse">Adresse :</label>
-                <input type="text" name="adresse" id="adresse" placeholder="Adresse" required>
-            </div>
-            <div>
-                <label for="ville">Ville :</label>
-                <input type="text" name="ville" id="ville" placeholder="Ville" required>
-            </div>
-            <div>
-                <label for="departement">Département :</label>
-                <input type="text" name="departement" id="departement" placeholder="Département" required>
-            </div>
-            <div>
-                <label for="tel">Téléphone :</label>
-                <input type="text" name="tel" id="tel" placeholder="Numéro de téléphone">
-            </div>
-            <div id="type_commerce_field" style="display: none;">
-                <label for="type_commerce">Type de commerce :</label>
-                <input type="text" name="type_commerce" id="type_commerce" placeholder="Type de commerce">
-            </div>
-            <button type="submit" class="signup-btn">S'inscrire</button>
-        </form>
+{% block title %}FoodLink - Inscription{% endblock %}
 
-        <!-- Redirection vers la page de connexion -->
-        <div class="options">
-            <a href="{{ url_for('login') }}">Vous avez déjà un compte ? Connectez-vous</a>
-        </div>
-    </div>
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+{% endblock %}
 
-    <!-- Messages flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul class="flash-messages">
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+{% block content %}
+{% include 'header.html' %}
 
-    <script>
-        // Afficher ou masquer le champ "Type de commerce" selon le rôle
-        document.querySelector('[name="role"]').addEventListener('change', function() {
-            const typeField = document.getElementById('type_commerce_field');
-            if (this.value === 'commerce') {
-                typeField.style.display = 'block';
+<!-- Script pour le header -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.top-menu');
+        
+        function handleScroll() {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
             } else {
-                typeField.style.display = 'none';
+                header.classList.remove('scrolled');
+            }
+        }
+
+        handleScroll();
+        
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
+    });
+</script>
 
-        // Masquer les messages flash après 5 secondes
-        setTimeout(() => {
-            const flashMessages = document.querySelectorAll('.flash-messages li');
-            flashMessages.forEach(message => {
-                message.style.opacity = '0';
-                message.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 500);
-            });
-        }, 5000);
-    </script>
-</body>
-</html>
+<!-- Conteneur d'inscription -->
+<div class="signup-container">
+    <h2>Inscription</h2>
+    <form method="POST" action="{{ url_for('register') }}">
+        <div>
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" placeholder="Votre adresse email" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
+        </div>
+        <div>
+            <label for="role">Type d'utilisateur :</label>
+            <select name="role" id="role" required>
+                <option value="association">Association</option>
+                <option value="commerce">Commerce</option>
+            </select>
+        </div>
+        <div>
+            <label for="nom">Nom de l'entreprise :</label>
+            <input type="text" name="nom" id="nom" placeholder="Nom de votre entreprise" required>
+        </div>
+        <div>
+            <label for="siret">SIRET :</label>
+            <input type="text" name="siret" id="siret" placeholder="Numéro SIRET" required>
+        </div>
+        <div>
+            <label for="adresse">Adresse :</label>
+            <input type="text" name="adresse" id="adresse" placeholder="Adresse" required>
+        </div>
+        <div>
+            <label for="ville">Ville :</label>
+            <input type="text" name="ville" id="ville" placeholder="Ville" required>
+        </div>
+        <div>
+            <label for="departement">Département :</label>
+            <input type="text" name="departement" id="departement" placeholder="Département" required>
+        </div>
+        <div>
+            <label for="tel">Téléphone :</label>
+            <input type="text" name="tel" id="tel" placeholder="Numéro de téléphone">
+        </div>
+        <div id="type_commerce_field" style="display: none;">
+            <label for="type_commerce">Type de commerce :</label>
+            <input type="text" name="type_commerce" id="type_commerce" placeholder="Type de commerce">
+        </div>
+        <button type="submit" class="signup-btn">S'inscrire</button>
+    </form>
+
+    <!-- Redirection vers la page de connexion -->
+    <div class="options">
+        <a href="{{ url_for('login') }}">Vous avez déjà un compte ? Connectez-vous</a>
+    </div>
+</div>
+
+<!-- Messages flash -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% endblock %}
+
+{% block additional_js %}
+<script>
+    // Afficher ou masquer le champ "Type de commerce" selon le rôle
+    document.querySelector('[name="role"]').addEventListener('change', function() {
+        const typeField = document.getElementById('type_commerce_field');
+        if (this.value === 'commerce') {
+            typeField.style.display = 'block';
+        } else {
+            typeField.style.display = 'none';
+        }
+    });
+
+    // Masquer les messages flash après 5 secondes
+    setTimeout(() => {
+        const flashMessages = document.querySelectorAll('.flash-messages li');
+        flashMessages.forEach(message => {
+            message.style.opacity = '0';
+            message.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 500);
+        });
+    }, 5000);
+</script>
+{% endblock %}

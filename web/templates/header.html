@@ -8,8 +8,7 @@
 
         <!-- Centered logo -->
         <div class="ellipse">
-          <div class="ellipse-bg"></div>
-          <img class="logo" src="{{ url_for('static', filename='css/foodlink.png') }}" alt="Logo FoodLink" width="150" height="auto">
+            <img class="logo" src="{{ url_for('static', filename='img/foodlink_small.png') }}" alt="Logo FoodLink" width="150" height="auto">
         </div>
 
         <!-- Right menu -->
@@ -44,3 +43,32 @@
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.top-menu');
+        
+        function handleScroll() {
+            if (window.scrollY > 10) { // Seuil très bas pour voir l'effet rapidement
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Vérification initiale
+        handleScroll();
+        
+        // Ajout de l'écouteur de scroll avec throttling pour de meilleures performances
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    });
+</script>
