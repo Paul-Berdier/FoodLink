@@ -4,41 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte des produits - Food Link</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='association.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='carte.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/association.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carte.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
 
 {% include 'header.html' %}
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const header = document.querySelector('.top-menu');
-        
-        function handleScroll() {
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-
-        handleScroll();
-        
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    });
-</script>
+<!-- Script pour le header -->
+<script src="{{ url_for('static', filename='js/header.js') }}"></script>
 
 <main>
     <div class="container">
@@ -69,6 +45,7 @@
             </div>
         </div>
 
+        <!-- Map and stores -->
         <div class="map-container">
             <div class="map-wrapper">
                 <div id="map"></div>
@@ -208,9 +185,43 @@
     </div>
 </main>
 
-{% include 'footer.html' %}
+<!-- Footer -->
+<footer>
+    <div class="container footer-container">
+        <div class="footer-logo">
+            <div class="footer-logo-inner">
+                <div class="footer-basket"></div>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>FOOD LINK</h3>
+            <nav class="footer-nav">
+                <a href="#">Présentation</a>
+                <a href="#">Partenaires</a>
+                <a href="#">Équipe</a>
+                <a href="#">Contact</a>
+            </nav>
+
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <span class="social-dot"></span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-dot"></span>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-dot"></span>
+                    <span>Facebook</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="{{ url_for('static', filename='js/association.js') }}"></script>
+<script src="association.js"></script>
 </body>
 </html>

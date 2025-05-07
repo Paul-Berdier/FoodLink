@@ -1,3 +1,6 @@
+/* Styles spécifiques à la page carte */
+
+/* Filtres */
 .filters {
     display: flex;
     align-items: center;
@@ -6,7 +9,6 @@
     flex-wrap: wrap;
     padding: 10px 0;
 }
-
 
 .filter-group {
     display: flex;
@@ -18,24 +20,20 @@
     cursor: pointer;
 }
 
-
 .filter-icon svg {
     width: 18px;
     height: 18px;
 }
-
 
 .filter-label {
     font-weight: 600;
     font-size: 14px;
 }
 
-
 .filter-arrow {
     font-size: 18px;
     font-weight: bold;
 }
-
 
 .search-group {
     display: flex;
@@ -46,7 +44,6 @@
     margin-left: auto;
 }
 
-
 .search-input {
     border: none;
     outline: none;
@@ -54,7 +51,6 @@
     font-size: 14px;
     width: 150px;
 }
-
 
 .search-button {
     background: none;
@@ -66,6 +62,7 @@
     padding: 5px;
 }
 
+/* Map container */
 .map-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -76,25 +73,21 @@
     overflow: hidden;
 }
 
-
 @media (min-width: 768px) {
     .map-container {
         grid-template-columns: 3fr 2fr;
     }
 }
 
-
 .map-wrapper {
     position: relative;
 }
-
 
 #map {
     height: 400px;
     width: 100%;
     background-color: #f0e6c0;
 }
-
 
 .map-note {
     position: absolute;
@@ -108,11 +101,10 @@
     text-align: center;
 }
 
-
+/* Stores list */
 .stores-list {
     border-left: 1px solid #eaeaea;
 }
-
 
 .stores-header {
     background-color: #0d4a3a;
@@ -120,11 +112,9 @@
     padding: 12px 15px;
 }
 
-
 .store-type {
     font-weight: 600;
 }
-
 
 .store-item {
     display: flex;
@@ -134,24 +124,21 @@
     border-bottom: 1px solid #eaeaea;
 }
 
-
 .store-name {
     font-weight: 500;
 }
-
 
 .store-cart {
     cursor: pointer;
 }
 
-
+/* Products section */
 .products-section {
     background-color: #0d4a3a;
     border-radius: 8px;
     padding: 20px;
     color: white;
 }
-
 
 .products-title {
     text-align: center;
@@ -160,7 +147,6 @@
     text-transform: lowercase;
     font-weight: normal;
 }
-
 
 .products-header {
     display: grid;
@@ -172,7 +158,6 @@
     font-size: 14px;
 }
 
-
 .store-products {
     background-color: #1a6356;
     border-radius: 8px;
@@ -180,23 +165,19 @@
     margin-bottom: 20px;
 }
 
-
 .store-info {
     margin-bottom: 15px;
 }
-
 
 .store-info h3 {
     font-size: 18px;
     margin-bottom: 5px;
 }
 
-
 .store-address {
     font-size: 12px;
     opacity: 0.9;
 }
-
 
 .product-row {
     display: grid;
@@ -206,16 +187,13 @@
     align-items: center;
 }
 
-
 .product-name {
     font-weight: 500;
 }
 
-
 .product-quantity, .product-dlc {
     text-align: center;
 }
-
 
 /* Map markers */
 .map-marker {
@@ -226,31 +204,25 @@
     display: inline-block;
 }
 
-
 .marker-lekki {
     background-color: #ffc0cb;
 }
-
 
 .marker-yaba {
     background-color: #add8e6;
 }
 
-
 .marker-surulere {
     background-color: #ffff00;
 }
-
 
 .marker-ikeja {
     background-color: #ffa07a;
 }
 
-
 .marker-ogodu {
     background-color: #00ffaa;
 }
-
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -259,22 +231,18 @@
         align-items: stretch;
     }
 
-
     .search-group {
         width: 100%;
         margin-left: 0;
     }
 
-
     .search-input {
         width: 100%;
     }
 
-
     .product-row {
         font-size: 14px;
     }
-
 
     .store-address {
         font-size: 11px;
