@@ -15,7 +15,8 @@ from flask import render_template, flash, redirect, url_for, request, jsonify
 from flask_bcrypt import Bcrypt
 from Register import validate_phone_number, validate_email, validate_siret
 from mail_truc import envoyer_mail
-
+import unicodedata
+import re
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -339,12 +340,18 @@ def reset_password_token(token):
             return redirect(url_for('login'))
     return render_template('reset_password_token.html', email=email)
 
-@app.route("/chat", methods=["POST"])
+def normalize(text):
+    text = text.lower()
+    text = unicodedata.normalize('NFD', text).encode('ascii', 'ignore').decode('utf-8')
+    text = re.sub(r'[^\w\s]', '', text)
+    return text.strip()
+
+@app.route("/chat", methods=["POST", "GET"])
 def chat():
-    user_msg = request.json.get("message", "").lower()
+    user_msg = normalize(request.json.get("message", ""))
 
     for question, answer in faq_data.items():
-        if question in user_msg:
+        if normalize(question) in user_msg:
             return jsonify({"response": answer})
 
     return jsonify({"response": "Désolé, je n’ai pas compris la question. Vous pouvez nous contacter à contact@foodlink.com."})
@@ -399,22 +406,22 @@ def profile():
     return render_template('profile.html', user=user)
 
 @app.route('/entreprise', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def entreprise():
     return render_template('entreprise.html')
 
 @app.route('/association', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def association():
     return render_template('association.html')
 
 @app.route('/historique', methods=['GET', 'POST'])
-#login_required
+@login_required
 def historique():
     return render_template('historique.html')
 
 @app.route('/aliments', methods=['GET', 'POST'])
-#login_required
+@login_required
 def aliments():
     return render_template('aliments.html')
 
