@@ -82,7 +82,3 @@ def generate_route_map(start, end):
             print(f"Erreur pour le mode {profile}: {response.status_code}, {response.text}")
 
     return mymap._repr_html_()
-
-
-# Exemple d'utilisation
-html_map = generate_route_map((47.218371, -1.563546), (48.8534, 2.3488))

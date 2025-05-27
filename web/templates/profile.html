@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
     <title>FoodLink - Mon Profil</title>
 </head>
 <body>
 
-        {% include 'header.html' %}
+        {% include 'header2.html' %}
 
     <h1>Mon Profil</h1>
     <form method="POST">
@@ -76,6 +76,7 @@
             </ul>
         {% endif %}
     {% endwith %}
+{% include 'footer.html' %}
 
 </body>
 </html>

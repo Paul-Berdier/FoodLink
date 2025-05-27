@@ -1,0 +1,51 @@
+/* =======================================================================
+   HEADER — FOODLINK 2025
+   Palette : #FFE8B3 (beige) | #1D3C34 (vert) | #FFA94D (orange)
+   Changements :
+   • Hauteur/espacements réduits
+   • Logo + petit (110 px → 65 px au scroll)
+   • Liens nav + compacts, typographie fluide (clamp)
+   • RWD conservé
+======================================================================= */
+
+/* -------- HEADER DE BASE -------- */
+.top-menu {
+  width: 100%;
+  background-color: #FFE8B3;
+  padding: 12px 0;              /* ↓ plus fin */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: none;
+  transition: padding .3s ease, box-shadow .3s ease;
+}
+
+.top-menu.scrolled {
+  padding: 6px 0;               /* ↓ encore plus fin */
+  background-color: #FFE8B3;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+/* -------- CONTENEUR CENTRAL -------- */
+.overlap-10 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  transition: gap .3s ease;
+}
+
+/* -------- MENUS LATÉRAUX -------- */
+.menu-container {
+  display: flex;
+  gap: 12px;                    /* ↓ */
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 4px 12px;            /* ↓ */
+  box-shadow: 0 2px 5px rgba(0,0,0,.05);
+  position: relative;
+  z-index: 1;
+}

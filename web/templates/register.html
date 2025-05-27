@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodLink - Inscription</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-    {% include 'header.html' %}
+    {% include 'header2.html' %}
 
     <!-- Conteneur d'inscription -->
     <div class="signup-container">
@@ -103,5 +103,7 @@
             });
         }, 5000);
     </script>
+{% include 'footer.html' %}
+
 </body>
 </html>

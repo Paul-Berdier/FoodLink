@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodLink - Connexion</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
-    <!-- Header -->
-    {% include 'header.html' %}
 
+    <!-- Header -->
+    {% include 'header2.html' %}
     <!-- Conteneur de connexion -->
     <div class="login-container">
         <h2>Connexion</h2>
@@ -59,61 +61,7 @@
     </script>
         </div>
 
-<style>
-#chatbot-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
-    text-align: center;
-    line-height: 60px;
-    cursor: pointer;
-    z-index: 1000;
-}
 
-#chatbot-box {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
-    background: white;
-    border: 1px solid #ccc;
-    display: none;
-    flex-direction: column;
-    z-index: 1000;
-}
-
-#chat-log {
-    flex-grow: 1;
-    padding: 10px;
-    overflow-y: auto;
-    font-size: 14px;
-}
-
-#chat-input {
-    display: flex;
-    border-top: 1px solid #ccc;
-}
-
-#chat-input input {
-    flex-grow: 1;
-    border: none;
-    padding: 10px;
-}
-
-#chat-input button {
-    background: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px;
-}
-</style>
 
 <div id="chatbot-icon">💬</div>
 
@@ -124,6 +72,7 @@
         <button onclick="sendMessage()">→</button>
     </div>
 </div>
+{% include 'footer.html' %}
 
 <script>
 const icon = document.getElementById('chatbot-icon');
@@ -154,6 +103,7 @@ function sendMessage() {
     });
 }
 </script>
+
 
 
 </body>
