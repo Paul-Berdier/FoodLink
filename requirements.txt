@@ -12,3 +12,4 @@ email-validator
 flask-login
 requests
 folium
+cryptography
