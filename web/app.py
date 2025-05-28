@@ -79,6 +79,9 @@ class Association(db.Model, UserMixin):
     siret = db.Column(db.BigInteger, nullable=False)  # Peut ajouter une validation personnalisée
     mdp = db.Column(db.String(255), nullable=False)  # Taille augmentée pour les mots de passe hashés
 
+    @property
+    def type_utilisateur(self):
+        return "association"
 
 class Commerce(db.Model, UserMixin):
     __tablename__ = 'commerce'
@@ -93,6 +96,10 @@ class Commerce(db.Model, UserMixin):
     tel = db.Column(db.Integer, nullable=False)  # Numéros stockés comme entier (max 10 chiffres)
     mdp = db.Column(db.String(255), nullable=False)
     siret = db.Column(db.BigInteger, nullable=False)
+
+    @property
+    def type_utilisateur(self):
+        return "commerce"
 
 
 class Offre(db.Model):

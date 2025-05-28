@@ -5,6 +5,13 @@
         <div class="menu-container menu-gauche">
             <a class="nav-link" href="{{ url_for('index') }}">Accueil</a>
             <a class="nav-link" href="#">Le concept</a>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.type_utilisateur == "commerce" %}
+                        <a class="nav-link" href="{{ url_for('entreprise') }}">Ma page</a>
+                    {% elif current_user.type_utilisateur == "association" %}
+                        <a class="nav-link" href="{{ url_for('association') }}">Ma page</a>
+                    {% endif %}
+                {% endif %}
         </div>
 
         <!-- Centered logo -->
